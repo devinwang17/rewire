@@ -30,13 +30,9 @@
       --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -50,15 +46,9 @@
       letter-spacing: 0.02em;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    button,
-    textarea {
-      font: inherit;
-    }
+    button, textarea, input { font: inherit; }
 
     .site-header {
       position: sticky;
@@ -150,9 +140,7 @@
       outline: none;
     }
 
-    .page {
-      overflow: hidden;
-    }
+    .page { overflow: hidden; }
 
     .section {
       max-width: var(--max);
@@ -189,9 +177,7 @@
       background: var(--green);
     }
 
-    h1,
-    h2,
-    h3 {
+    h1, h2, h3 {
       margin: 0;
       line-height: 1.2;
       letter-spacing: -0.02em;
@@ -419,16 +405,14 @@
     .tool-layout,
     .curve-layout,
     .loop-wrap,
-    .practice-grid,
+    .practice-layout,
     .tabs {
       display: grid;
       gap: 28px;
       align-items: start;
     }
 
-    .split {
-      grid-template-columns: 0.9fr 1.1fr;
-    }
+    .split { grid-template-columns: 0.9fr 1.1fr; }
 
     .panel {
       background: rgba(255, 250, 241, 0.75);
@@ -509,9 +493,7 @@
       border-block: 1px solid var(--line);
     }
 
-    .curve-layout {
-      grid-template-columns: 0.84fr 1.16fr;
-    }
+    .curve-layout { grid-template-columns: 0.84fr 1.16fr; }
 
     .curve-copy {
       position: sticky;
@@ -549,13 +531,8 @@
       display: inline-block;
     }
 
-    .curve-line-sample.sympathetic {
-      background: var(--green-dark);
-    }
-
-    .curve-line-sample.para {
-      background: #b9b9ad;
-    }
+    .curve-line-sample.sympathetic { background: var(--green-dark); }
+    .curve-line-sample.para { background: #b9b9ad; }
 
     .curve-cards {
       display: grid;
@@ -602,9 +579,7 @@
       padding-left: 12px;
     }
 
-    .tool-layout {
-      grid-template-columns: 0.82fr 1.18fr;
-    }
+    .tool-layout { grid-template-columns: 0.82fr 1.18fr; }
 
     .tool-stack,
     .accordion,
@@ -635,9 +610,7 @@
       font-weight: 800;
     }
 
-    .accordion-trigger span {
-      color: var(--green-dark);
-    }
+    .accordion-trigger span { color: var(--green-dark); }
 
     .accordion-content {
       display: none;
@@ -645,9 +618,7 @@
       color: var(--muted);
     }
 
-    .accordion-item.is-open .accordion-content {
-      display: block;
-    }
+    .accordion-item.is-open .accordion-content { display: block; }
 
     .distinguish-section,
     .dmn-reset-section {
@@ -673,13 +644,8 @@
       opacity: 0.72;
     }
 
-    .triad-card.worry::before {
-      background: var(--amber);
-    }
-
-    .triad-card.anxiety::before {
-      background: var(--blue);
-    }
+    .triad-card.worry::before { background: var(--amber); }
+    .triad-card.anxiety::before { background: var(--blue); }
 
     .triad-label {
       display: inline-flex;
@@ -839,9 +805,7 @@
       color: var(--paper);
     }
 
-    .reframe-card.dark p {
-      color: rgba(255, 250, 241, 0.72);
-    }
+    .reframe-card.dark p { color: rgba(255, 250, 241, 0.72); }
 
     .quote-line {
       margin: 18px 0 0;
@@ -851,9 +815,7 @@
       border: 1px solid rgba(255, 250, 241, 0.18);
     }
 
-    .tabs {
-      grid-template-columns: 280px 1fr;
-    }
+    .tabs { grid-template-columns: 280px 1fr; }
 
     .tab-buttons {
       display: grid;
@@ -887,13 +849,8 @@
       box-shadow: var(--shadow);
     }
 
-    .tab-panel [data-panel] {
-      display: none;
-    }
-
-    .tab-panel [data-panel].is-active {
-      display: block;
-    }
+    .tab-panel [data-panel] { display: none; }
+    .tab-panel [data-panel].is-active { display: block; }
 
     .reset-number {
       display: inline-flex;
@@ -914,9 +871,7 @@
       color: var(--ink);
     }
 
-    .dmn-practice-strip {
-      margin-top: 22px;
-    }
+    .dmn-practice-strip { margin-top: 22px; }
 
     .dmn-practice-strip strong {
       display: block;
@@ -973,16 +928,88 @@
       border-top: 1px solid var(--line);
     }
 
-    .practice-grid {
-      grid-template-columns: 0.95fr 1.05fr;
+    .practice-layout {
+      grid-template-columns: 0.88fr 1.12fr;
+      align-items: start;
     }
 
-    .emotion-wheel-card {
+    .practice-sidebar {
+      position: sticky;
+      top: 92px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .practice-purpose,
+    .emotion-wheel-card,
+    .practice-tip-card,
+    .practice-step {
       background: rgba(255, 250, 241, 0.78);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      padding: 20px;
       box-shadow: var(--shadow);
+    }
+
+    .practice-purpose {
+      padding: 24px;
+    }
+
+    .practice-purpose h3 {
+      font-family: var(--serif);
+      font-size: 26px;
+    }
+
+    .practice-purpose p {
+      color: var(--muted);
+      margin: 10px 0 0;
+    }
+
+    .purpose-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .purpose-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .purpose-list span {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(110, 143, 127, 0.15);
+      color: var(--green-dark);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .practice-tip-card {
+      padding: 16px 18px;
+      background: rgba(197, 140, 70, 0.12);
+      border-color: rgba(197, 140, 70, 0.24);
+      color: var(--amber-dark);
+      box-shadow: none;
+      font-size: 15px;
+    }
+
+    .practice-tip-card strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .emotion-wheel-card {
+      padding: 20px;
     }
 
     .emotion-wheel-card svg {
@@ -998,11 +1025,49 @@
       text-align: center;
     }
 
+    .worksheet {
+      display: grid;
+      gap: 18px;
+    }
+
+    .practice-step {
+      padding: 24px;
+      box-shadow: 0 14px 34px rgba(31, 36, 34, 0.05);
+    }
+
+    .step-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .step-kicker .step-number {
+      font-family: var(--serif);
+      color: rgba(64, 95, 83, 0.38);
+      font-size: 34px;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+
+    .practice-step h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
     .field {
-      background: rgba(255, 250, 241, 0.76);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 18px;
+      margin-top: 14px;
     }
 
     .field label {
@@ -1035,10 +1100,131 @@
       box-shadow: 0 0 0 4px rgba(110, 143, 127, 0.14);
     }
 
+    .example-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .example-chip {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.72);
+      color: var(--muted);
+      padding: 7px 10px;
+      font-size: 13px;
+    }
+
+    .stress-choice-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .stress-choice input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .stress-choice-card {
+      display: block;
+      min-height: 156px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 250, 241, 0.72);
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .stress-choice-card strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .stress-choice-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .stress-choice input:checked + .stress-choice-card {
+      border-color: rgba(64, 95, 83, 0.55);
+      background: linear-gradient(145deg, rgba(110, 143, 127, 0.2), rgba(255, 250, 241, 0.84));
+      box-shadow: 0 12px 24px rgba(31, 36, 34, 0.08);
+    }
+
+    .fact-worry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .fact-column,
+    .worry-column {
+      border-radius: 20px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.64);
+    }
+
+    .fact-column h4,
+    .worry-column h4 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .fact-column h4 { color: var(--green-dark); }
+    .worry-column h4 { color: var(--amber-dark); }
+
+    .fact-column textarea,
+    .worry-column textarea {
+      min-height: 68px;
+      margin-top: 8px;
+    }
+
+    .reminder-card {
+      margin-top: 16px;
+      border-radius: 18px;
+      padding: 16px 18px;
+      background: rgba(110, 143, 127, 0.12);
+      border: 1px solid rgba(110, 143, 127, 0.22);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .reminder-card strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .reflection-prompts {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .reflection-prompts div {
+      border-left: 3px solid var(--green);
+      padding: 10px 12px;
+      border-radius: 0 12px 12px 0;
+      background: rgba(31, 36, 34, 0.035);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
     .worksheet-actions {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+      margin-top: 4px;
     }
 
     .footer {
@@ -1058,14 +1244,10 @@
       flex-wrap: wrap;
     }
 
-    .mobile-only {
-      display: none;
-    }
+    .mobile-only { display: none; }
 
     @media (max-width: 1080px) {
-      .nav-links {
-        gap: 4px;
-      }
+      .nav-links { gap: 4px; }
 
       .nav-links a,
       .download-link {
@@ -1079,7 +1261,7 @@
       .split,
       .tool-layout,
       .loop-wrap,
-      .practice-grid,
+      .practice-layout,
       .tabs,
       .curve-layout,
       .map-grid,
@@ -1088,7 +1270,9 @@
       .dmn-reset-grid,
       .reframe-grid,
       .dmn-practice-strip,
-      .pathway {
+      .pathway,
+      .stress-choice-group,
+      .fact-worry-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1106,37 +1290,25 @@
         transform: none;
       }
 
-      .curve-copy {
+      .curve-copy,
+      .practice-sidebar {
         position: relative;
         top: auto;
       }
     }
 
     @media (max-width: 760px) {
-      .nav {
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .mobile-only {
-        display: inline-flex;
-      }
-
-      .section {
-        padding: 66px 18px;
-      }
+      .nav { align-items: flex-start; }
+      .nav-links { display: none; }
+      .mobile-only { display: inline-flex; }
+      .section { padding: 66px 18px; }
 
       .hero-actions,
       .worksheet-actions {
         flex-direction: column;
       }
 
-      .button {
-        width: 100%;
-      }
+      .button { width: 100%; }
 
       .hero-figure-card {
         padding: 14px;
@@ -1148,13 +1320,8 @@
         border-radius: 18px;
       }
 
-      .brain-item {
-        grid-template-columns: 1fr;
-      }
-
-      .scale-labels {
-        grid-template-columns: 1fr;
-      }
+      .brain-item { grid-template-columns: 1fr; }
+      .scale-labels { grid-template-columns: 1fr; }
 
       .loop-dot {
         width: 110px;
@@ -1166,8 +1333,11 @@
       .loop-dot.three { bottom: 12px; }
       .loop-dot.four { left: -2px; }
 
-      .loop-core {
-        font-size: 14px;
+      .loop-core { font-size: 14px; }
+
+      .practice-step,
+      .practice-purpose {
+        padding: 20px;
       }
     }
   </style>
@@ -1200,7 +1370,7 @@
     <section class="section hero">
       <div>
         <div class="eyebrow">Neuroplasticity Reading Notes</div>
-        <h1>不是你不夠好，是大腦走慣了舊路。</h1>
+        <h1>今天一起來重塑大腦吧！</h1>
         <p class="lead">
           這次讀書會會從《Rewire：神經可塑性》出發，看懂壓力、擔憂、焦慮與反芻如何形成自動反應，並練習在警報響起時，為自己多留一個選擇。
         </p>
@@ -1239,7 +1409,6 @@
             </defs>
 
             <rect x="0" y="0" width="640" height="640" rx="34" fill="#fffaf1"></rect>
-
             <circle cx="320" cy="320" r="226" fill="none" stroke="rgba(31,36,34,0.09)" stroke-width="34"></circle>
 
             <g fill="none" stroke="#5f7f72" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowHead)">
@@ -1275,7 +1444,6 @@
               </text>
 
               <text x="405" y="558" text-anchor="middle" font-size="21" fill="#8a5e2e" font-weight="900">高度警覺</text>
-
               <text x="254" y="558" text-anchor="middle" font-size="21">延宕</text>
 
               <text x="122" y="450" text-anchor="middle" font-size="21" fill="#8a5e2e" font-weight="900">
@@ -1820,108 +1988,243 @@
 
     <section id="practice" class="section practice">
       <div class="section-intro">
-        <div class="eyebrow">Practice</div>
-        <h2>小練習：從命名情緒開始，找出一條可以改寫的路徑</h2>
-        <p>情緒之輪不是要你把自己分類，而是幫你把模糊的不舒服說清楚。情緒一旦被命名，前額葉皮質就比較有機會重新介入。</p>
+        <div class="eyebrow">Practice Worksheet</div>
+        <h2>讀書會小練習｜我在擔心什麼？</h2>
+        <p>
+          很多時候，我們會用一句「我壓力好大」概括所有感受。但這句話裡，可能混雜了壓力、情緒、擔憂，以及大腦自動補上的負面劇情。這個練習會帶你把它拆開，看見自己真正卡住的是哪一部分。
+        </p>
       </div>
 
-      <div class="practice-grid">
-        <figure class="emotion-wheel-card">
-          <svg viewBox="0 0 700 700" role="img" aria-label="情緒之輪參考圖">
-            <rect width="700" height="700" fill="#fffaf1" rx="24"></rect>
+      <div class="practice-layout">
+        <aside class="practice-sidebar">
+          <div class="practice-purpose">
+            <h3>練習目的</h3>
+            <p>透過幾個步驟，或許能幫助你釐清：</p>
+            <ol class="purpose-list">
+              <li><span>1</span>我現在處在哪一種壓力狀態？</li>
+              <li><span>2</span>我真正感受到的情緒是什麼？</li>
+              <li><span>3</span>哪些是事實？哪些是我的擔憂？</li>
+              <li><span>4</span>拆解之後，我對這件事有沒有多一點理解？</li>
+            </ol>
+          </div>
 
-            <g transform="translate(350 350)">
-              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#1f2422" opacity="0.86"></ellipse>
-              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#6d746f" opacity="0.62" transform="rotate(45)"></ellipse>
-              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#1f2422" opacity="0.42" transform="rotate(90)"></ellipse>
-              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#b7bbb7" opacity="0.62" transform="rotate(135)"></ellipse>
-              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#6d746f" opacity="0.7" transform="rotate(180)"></ellipse>
-              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#1f2422" opacity="0.62" transform="rotate(225)"></ellipse>
-              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#b7bbb7" opacity="0.75" transform="rotate(270)"></ellipse>
-              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#6d746f" opacity="0.55" transform="rotate(315)"></ellipse>
+          <div class="practice-tip-card">
+            <strong>練習提醒</strong>
+            請選一件「最近讓你有壓力，但強度不要太高」的小事來練習。
+          </div>
 
-              <circle r="245" fill="none" stroke="#1f2422" stroke-opacity="0.28" stroke-width="2"></circle>
-              <circle r="165" fill="none" stroke="#1f2422" stroke-opacity="0.26" stroke-width="2"></circle>
-              <circle r="86" fill="none" stroke="#1f2422" stroke-opacity="0.24" stroke-width="2"></circle>
+          <figure class="emotion-wheel-card">
+            <svg viewBox="0 0 700 700" role="img" aria-label="情緒之輪參考圖">
+              <rect width="700" height="700" fill="#fffaf1" rx="24"></rect>
 
-              <g stroke="#1f2422" stroke-opacity="0.16">
-                <line x1="0" y1="-245" x2="0" y2="245"></line>
-                <line x1="-245" y1="0" x2="245" y2="0"></line>
-                <line x1="-173" y1="-173" x2="173" y2="173"></line>
-                <line x1="173" y1="-173" x2="-173" y2="173"></line>
+              <g transform="translate(350 350)">
+                <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#1f2422" opacity="0.86"></ellipse>
+                <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#6d746f" opacity="0.62" transform="rotate(45)"></ellipse>
+                <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#1f2422" opacity="0.42" transform="rotate(90)"></ellipse>
+                <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#b7bbb7" opacity="0.62" transform="rotate(135)"></ellipse>
+                <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#6d746f" opacity="0.7" transform="rotate(180)"></ellipse>
+                <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#1f2422" opacity="0.62" transform="rotate(225)"></ellipse>
+                <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#b7bbb7" opacity="0.75" transform="rotate(270)"></ellipse>
+                <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#6d746f" opacity="0.55" transform="rotate(315)"></ellipse>
+
+                <circle r="245" fill="none" stroke="#1f2422" stroke-opacity="0.28" stroke-width="2"></circle>
+                <circle r="165" fill="none" stroke="#1f2422" stroke-opacity="0.26" stroke-width="2"></circle>
+                <circle r="86" fill="none" stroke="#1f2422" stroke-opacity="0.24" stroke-width="2"></circle>
+
+                <g stroke="#1f2422" stroke-opacity="0.16">
+                  <line x1="0" y1="-245" x2="0" y2="245"></line>
+                  <line x1="-245" y1="0" x2="245" y2="0"></line>
+                  <line x1="-173" y1="-173" x2="173" y2="173"></line>
+                  <line x1="173" y1="-173" x2="-173" y2="173"></line>
+                </g>
               </g>
-            </g>
 
-            <g font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" text-anchor="middle" fill="#1f2422" font-weight="700">
-              <text x="350" y="48" font-size="28">情緒之輪</text>
-              <text x="350" y="184" font-size="21" fill="#fffaf1">靜謐</text>
-              <text x="350" y="248" font-size="21" fill="#fffaf1">喜樂</text>
-              <text x="350" y="316" font-size="21" fill="#fffaf1">狂喜</text>
+              <g font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" text-anchor="middle" fill="#1f2422" font-weight="700">
+                <text x="350" y="48" font-size="28">情緒之輪</text>
+                <text x="350" y="184" font-size="21" fill="#fffaf1">靜謐</text>
+                <text x="350" y="248" font-size="21" fill="#fffaf1">喜樂</text>
+                <text x="350" y="316" font-size="21" fill="#fffaf1">狂喜</text>
 
-              <text x="470" y="226" font-size="20">接受</text>
-              <text x="444" y="287" font-size="20">信賴</text>
-              <text x="407" y="339" font-size="20">仰慕</text>
+                <text x="470" y="226" font-size="20">接受</text>
+                <text x="444" y="287" font-size="20">信賴</text>
+                <text x="407" y="339" font-size="20">仰慕</text>
 
-              <text x="528" y="356" font-size="20" fill="#fffaf1">恐懼</text>
-              <text x="588" y="356" font-size="20">害怕</text>
-              <text x="637" y="356" font-size="20">憂懼</text>
+                <text x="528" y="356" font-size="20" fill="#fffaf1">恐懼</text>
+                <text x="588" y="356" font-size="20">害怕</text>
+                <text x="637" y="356" font-size="20">憂懼</text>
 
-              <text x="457" y="434" font-size="20">驚異</text>
-              <text x="518" y="484" font-size="20">驚訝</text>
-              <text x="570" y="532" font-size="20">焦躁不安</text>
+                <text x="457" y="434" font-size="20">驚異</text>
+                <text x="518" y="484" font-size="20">驚訝</text>
+                <text x="570" y="532" font-size="20">焦躁不安</text>
 
-              <text x="350" y="424" font-size="21">悲傷</text>
-              <text x="350" y="488" font-size="21">難過</text>
-              <text x="350" y="552" font-size="21">憂思</text>
+                <text x="350" y="424" font-size="21">悲傷</text>
+                <text x="350" y="488" font-size="21">難過</text>
+                <text x="350" y="552" font-size="21">憂思</text>
 
-              <text x="254" y="438" font-size="20" fill="#fffaf1">作嘔</text>
-              <text x="194" y="496" font-size="20" fill="#fffaf1">無聊</text>
-              <text x="151" y="556" font-size="20">懊悔</text>
+                <text x="254" y="438" font-size="20" fill="#fffaf1">作嘔</text>
+                <text x="194" y="496" font-size="20" fill="#fffaf1">無聊</text>
+                <text x="151" y="556" font-size="20">懊悔</text>
 
-              <text x="173" y="356" font-size="20">暴怒</text>
-              <text x="112" y="356" font-size="20">憤怒</text>
-              <text x="64" y="356" font-size="20">惱怒</text>
+                <text x="173" y="356" font-size="20">暴怒</text>
+                <text x="112" y="356" font-size="20">憤怒</text>
+                <text x="64" y="356" font-size="20">惱怒</text>
 
-              <text x="252" y="288" font-size="20" fill="#fffaf1">警覺</text>
-              <text x="227" y="228" font-size="20" fill="#fffaf1">預期</text>
-              <text x="183" y="172" font-size="20" fill="#fffaf1">感興趣</text>
+                <text x="252" y="288" font-size="20" fill="#fffaf1">警覺</text>
+                <text x="227" y="228" font-size="20" fill="#fffaf1">預期</text>
+                <text x="183" y="172" font-size="20" fill="#fffaf1">感興趣</text>
 
-              <text x="228" y="128" font-size="18">樂觀</text>
-              <text x="472" y="128" font-size="18">愛</text>
-              <text x="625" y="250" font-size="18">順服</text>
-              <text x="626" y="461" font-size="18">敬畏</text>
-              <text x="485" y="642" font-size="18">不以為然</text>
-              <text x="216" y="642" font-size="18">懊悔</text>
-              <text x="75" y="462" font-size="18">鄙視</text>
-              <text x="74" y="250" font-size="18">攻擊性</text>
-            </g>
+                <text x="228" y="128" font-size="18">樂觀</text>
+                <text x="472" y="128" font-size="18">愛</text>
+                <text x="625" y="250" font-size="18">順服</text>
+                <text x="626" y="461" font-size="18">敬畏</text>
+                <text x="485" y="642" font-size="18">不以為然</text>
+                <text x="216" y="642" font-size="18">懊悔</text>
+                <text x="75" y="462" font-size="18">鄙視</text>
+                <text x="74" y="250" font-size="18">攻擊性</text>
+              </g>
 
-            <text x="22" y="676" font-size="16" fill="#6d746f">參考：普拉奇克博士，1980</text>
-          </svg>
+              <text x="22" y="676" font-size="16" fill="#6d746f">參考：普拉奇克博士，1980</text>
+            </svg>
 
-          <figcaption class="caption">
-            讀書會使用方式：先選核心情緒，再往外圈找更精準的詞。
-          </figcaption>
-        </figure>
+            <figcaption class="caption">
+              使用方式：先選核心情緒，再往外圈找更精準的詞。
+            </figcaption>
+          </figure>
+        </aside>
 
         <form class="worksheet" id="worksheet">
-          <div class="field">
-            <label for="emotion">1. 我現在最接近哪一個情緒？</label>
-            <p>可以先寫大方向，再從情緒之輪往外圈找更精準的詞。</p>
-            <textarea id="emotion" placeholder="例如：我以為自己只是壓力大，但更精準地說，可能是焦躁不安與害怕。"></textarea>
-          </div>
+          <section class="practice-step">
+            <div class="step-kicker"><span class="step-number">01</span> Event & First Reaction</div>
+            <h3>寫下事件與第一反應</h3>
+            <p class="step-desc">請用一句話寫下最近讓你感到壓力的一件小事，再捕捉還沒拆解之前的第一反應。</p>
 
-          <div class="field">
-            <label for="story">2. 這個情緒背後，是事實、擔憂，還是自我敘事？</label>
-            <p>練習把「發生了什麼」和「我腦中補上的解釋」分開。</p>
-            <textarea id="story" placeholder="事實是……；我的擔憂是……；我反覆說給自己聽的故事是……"></textarea>
-          </div>
+            <div class="field">
+              <label for="eventText">我的事件是：</label>
+              <textarea id="eventText" placeholder="例如：我今天收到一封主管要求修改報告的訊息。"></textarea>
+            </div>
 
-          <div class="field">
-            <label for="newPath">3. 我想削弱哪條舊路徑？想練習哪個新反應？</label>
-            <p>新反應不用很大，可以是一個呼吸、一個暫停、一句重新架構問題。</p>
-            <textarea id="newPath" placeholder="舊路徑：一焦慮就反覆檢查。新反應：先做一次生理性嘆息，再問自己這是事實還是擔憂。"></textarea>
-          </div>
+            <div class="field">
+              <label for="firstReaction">在還沒拆解之前，我對這件事的第一反應是：</label>
+              <textarea id="firstReaction" placeholder="例如：我完蛋了，他是不是覺得我能力不夠？"></textarea>
+            </div>
+
+            <div class="example-chips" aria-label="第一反應範例">
+              <span class="example-chip">我完蛋了</span>
+              <span class="example-chip">他是不是討厭我？</span>
+              <span class="example-chip">我是不是能力不夠？</span>
+              <span class="example-chip">我只覺得很煩、很累</span>
+              <span class="example-chip">我怎麼又搞成這樣？</span>
+            </div>
+          </section>
+
+          <section class="practice-step">
+            <div class="step-kicker"><span class="step-number">02</span> Name the Stress</div>
+            <h3>壓力命名</h3>
+            <p class="step-desc">請判斷這件事比較像哪一種壓力。選完後，再寫下命名後的理解。</p>
+
+            <div class="stress-choice-group" role="radiogroup" aria-label="壓力類型">
+              <label class="stress-choice">
+                <input type="radio" name="stressType" value="警覺性壓力">
+                <span class="stress-choice-card">
+                  <strong>警覺性壓力</strong>
+                  <span>讓我更專注、警醒，準備行動。</span>
+                </span>
+              </label>
+
+              <label class="stress-choice">
+                <input type="radio" name="stressType" value="急性壓力">
+                <span class="stress-choice-card">
+                  <strong>急性壓力</strong>
+                  <span>短期、明確，需要處理某個任務或問題。</span>
+                </span>
+              </label>
+
+              <label class="stress-choice">
+                <input type="radio" name="stressType" value="慢性壓力">
+                <span class="stress-choice-card">
+                  <strong>慢性壓力</strong>
+                  <span>已經持續一段時間，讓我疲憊、低電量、難以恢復。</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="field">
+              <label for="stressNameDetail">我現在不是單純「壓力大」，我比較像是：</label>
+              <textarea id="stressNameDetail" placeholder="例如：這比較像急性壓力，因為它是明確且短期需要處理的任務。"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="stressClarity">把壓力命名之後，這件事有沒有變得比較清楚？</label>
+              <textarea id="stressClarity" placeholder="例如：我發現不是所有事情都失控，只是有一個任務需要被拆小。"></textarea>
+            </div>
+          </section>
+
+          <section class="practice-step">
+            <div class="step-kicker"><span class="step-number">03</span> Emotion Wheel</div>
+            <h3>用情緒之輪辨識情緒</h3>
+            <p class="step-desc">請看左側情緒之輪，從核心情緒開始，再往外圈找更精準的詞。可以選一到兩個最接近你現在狀態的字。</p>
+
+            <div class="field">
+              <label for="emotionConcern">我現在最接近的情緒是？情緒背後的擔憂是什麼？</label>
+              <textarea id="emotionConcern" placeholder="例如：比較接近害怕和焦躁不安。背後的擔憂是：我怕自己做不好，或被認為不可靠。"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="emotionDifference">這個情緒，和我一開始以為的感覺一樣嗎？有沒有哪裡不太一樣？</label>
+              <textarea id="emotionDifference" placeholder="例如：一開始以為只是煩，但拆開後發現其實是害怕被否定。"></textarea>
+            </div>
+          </section>
+
+          <section class="practice-step">
+            <div class="step-kicker"><span class="step-number">04</span> Fact vs Worry</div>
+            <h3>拆解事實與擔憂</h3>
+            <p class="step-desc">「事實」是已經發生、可以被客觀描述的內容；「擔憂」是推測、想像、害怕，或對自己的負面定論。</p>
+
+            <div class="fact-worry-grid">
+              <div class="fact-column">
+                <h4>我確定的事實</h4>
+                <textarea id="fact1" placeholder="事實 1"></textarea>
+                <textarea id="fact2" placeholder="事實 2"></textarea>
+                <textarea id="fact3" placeholder="事實 3"></textarea>
+              </div>
+
+              <div class="worry-column">
+                <h4>我腦中的擔憂／劇情</h4>
+                <textarea id="worry1" placeholder="擔憂／劇情 1"></textarea>
+                <textarea id="worry2" placeholder="擔憂／劇情 2"></textarea>
+                <textarea id="worry3" placeholder="擔憂／劇情 3"></textarea>
+              </div>
+            </div>
+
+            <div class="reminder-card">
+              <strong>提醒自己</strong>
+              事實通常比較短；擔憂通常比較長。情緒是真的，但情緒帶出的劇情不一定都是事實。
+            </div>
+
+            <div class="field">
+              <label for="autoStory">我容易自動補上的劇情是：</label>
+              <textarea id="autoStory" placeholder="例如：只要有人要求我修改，我就會自動補成「我做得很差」。"></textarea>
+            </div>
+          </section>
+
+          <section class="practice-step">
+            <div class="step-kicker"><span class="step-number">05</span> Reflection</div>
+            <h3>開放反思：拆解之後，我看見了什麼？</h3>
+            <p class="step-desc">請回頭看一開始寫下的第一反應，再看看剛剛拆解出的壓力、情緒、事實與擔憂。以下依照個人舒服的狀態，隨喜回答。</p>
+
+            <div class="reflection-prompts">
+              <div>我一開始以為自己在煩什麼？拆解後有沒有發現其實不是同一件事？</div>
+              <div>我辨識出的情緒，和原本以為的情緒有沒有不同？</div>
+              <div>我最常把哪一種擔憂誤認成事實？</div>
+              <div>拆解後，我對自己的態度有沒有一點不同？</div>
+              <div>這個練習有沒有讓我看到某種「自動反應」？</div>
+            </div>
+
+            <div class="field">
+              <label for="reflection">拆解之後，我看見了：</label>
+              <textarea id="reflection" placeholder="例如：我不是不想面對，而是太快把修改要求解讀成自己不夠好。"></textarea>
+            </div>
+          </section>
 
           <div class="worksheet-actions">
             <button class="button primary" type="button" id="copyPractice">複製我的練習內容</button>
@@ -1972,21 +2275,53 @@
     const copyButton = document.getElementById("copyPractice");
 
     copyButton.addEventListener("click", async () => {
-      const emotion = document.getElementById("emotion").value.trim();
-      const story = document.getElementById("story").value.trim();
-      const newPath = document.getElementById("newPath").value.trim();
+      const getValue = (id) => document.getElementById(id)?.value.trim() || "（尚未填寫）";
+      const selectedStress = document.querySelector('input[name="stressType"]:checked')?.value || "（尚未選擇）";
 
       const content = [
-        "《Rewire：神經可塑性》讀書會小練習",
+        "讀書會小練習｜我在擔心什麼？",
         "",
-        "1. 我現在最接近的情緒：",
-        emotion || "（尚未填寫）",
+        "1. 事件與第一反應",
+        "我的事件是：",
+        getValue("eventText"),
         "",
-        "2. 這個情緒背後，是事實、擔憂，還是自我敘事？",
-        story || "（尚未填寫）",
+        "我的第一反應是：",
+        getValue("firstReaction"),
         "",
-        "3. 我想削弱的舊路徑，以及想練習的新反應：",
-        newPath || "（尚未填寫）"
+        "2. 壓力命名",
+        "我選擇的壓力類型：",
+        selectedStress,
+        "",
+        "我現在不是單純「壓力大」，我比較像是：",
+        getValue("stressNameDetail"),
+        "",
+        "把壓力命名之後，我看見：",
+        getValue("stressClarity"),
+        "",
+        "3. 情緒之輪辨識",
+        "我現在最接近的情緒，以及背後的擔憂：",
+        getValue("emotionConcern"),
+        "",
+        "這和我一開始以為的感覺有什麼不同：",
+        getValue("emotionDifference"),
+        "",
+        "4. 拆解事實與擔憂",
+        "我確定的事實：",
+        `- ${getValue("fact1")}`,
+        `- ${getValue("fact2")}`,
+        `- ${getValue("fact3")}`,
+        "",
+        "我腦中的擔憂／劇情：",
+        `- ${getValue("worry1")}`,
+        `- ${getValue("worry2")}`,
+        `- ${getValue("worry3")}`,
+        "",
+        "我容易自動補上的劇情是：",
+        getValue("autoStory"),
+        "",
+        "5. 開放反思",
+        "拆解之後，我看見了：",
+        getValue("reflection")
       ].join("\n");
 
       try {
