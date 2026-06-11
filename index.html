@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《Rewire：神經可塑性》讀書會導讀</title>
+
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffaf1;
+      --paper-deep: #efe5d3;
+      --ink: #1f2422;
+      --muted: #6d746f;
+      --line: rgba(31, 36, 34, 0.14);
+      --line-strong: rgba(31, 36, 34, 0.32);
+      --green: #6e8f7f;
+      --green-dark: #405f53;
+      --green-line: #5f7f72;
+      --blue: #27384f;
+      --amber: #c58c46;
+      --amber-dark: #8a5e2e;
+      --card: rgba(255, 250, 241, 0.78);
+      --shadow: 0 20px 50px rgba(31, 36, 34, 0.08);
+      --radius-xl: 32px;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --max: 1160px;
+      --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(110, 143, 127, 0.18), transparent 32rem),
+        radial-gradient(circle at 90% 10%, rgba(197, 140, 70, 0.13), transparent 34rem),
+        linear-gradient(180deg, var(--bg), #f8f5ee 52%, #eee4d4);
+      line-height: 1.75;
+      letter-spacing: 0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    textarea {
+      font: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(246, 241, 232, 0.84);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      position: relative;
+      background: var(--paper);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      top: 6px;
+      left: 6px;
+      box-shadow: 12px 11px 0 var(--blue);
+    }
+
+    .brand-mark::after {
+      width: 18px;
+      height: 1px;
+      border-radius: 0;
+      background: var(--line-strong);
+      transform: rotate(40deg);
+      top: 15px;
+      left: 6px;
+      box-shadow: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a,
+    .download-link {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .download-link:hover,
+    .download-link:focus-visible {
+      color: var(--ink);
+      background: rgba(255, 250, 241, 0.84);
+      outline: none;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 88px 22px;
+      position: relative;
+    }
+
+    .hero {
+      padding-top: 84px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+      gap: 48px;
+      min-height: 680px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green-dark);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 800;
+      max-width: 760px;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 46px);
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 22px 0 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      border-radius: 999px;
+      padding: 12px 20px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      color: #fffaf1;
+      background: var(--ink);
+      box-shadow: 0 10px 22px rgba(31, 36, 34, 0.16);
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      transform: translateY(-2px);
+      background: var(--green-dark);
+      outline: none;
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(255, 250, 241, 0.74);
+      border-color: var(--line);
+    }
+
+    .button.secondary:hover,
+    .button.secondary:focus-visible {
+      background: #fffaf1;
+      border-color: var(--line-strong);
+      outline: none;
+    }
+
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .meta-pill {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      background: rgba(255, 250, 241, 0.58);
+    }
+
+    .hero-figure-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(145deg, rgba(255, 250, 241, 0.88), rgba(239, 229, 211, 0.66));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .cycle-header {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .cycle-header span {
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cycle-header strong {
+      font-family: var(--serif);
+      font-size: clamp(23px, 2.6vw, 32px);
+      line-height: 1.25;
+    }
+
+    .cycle-visual {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fffaf1;
+    }
+
+    .cycle-visual svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-figure-note {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .hero-note-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 250, 241, 0.78);
+      padding: 14px 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-note-card strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin-bottom: 36px;
+    }
+
+    .section-intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .map-grid,
+    .info-grid,
+    .triad-grid,
+    .dmn-reset-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .stage-card,
+    .info-card,
+    .tool-card,
+    .triad-card,
+    .dmn-reset-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: 0 16px 40px rgba(31, 36, 34, 0.05);
+    }
+
+    .stage-card.current {
+      background: linear-gradient(145deg, rgba(64, 95, 83, 0.12), rgba(255, 250, 241, 0.78));
+      border-color: rgba(64, 95, 83, 0.32);
+    }
+
+    .stage-number {
+      font-family: var(--serif);
+      font-size: 54px;
+      color: rgba(31, 36, 34, 0.16);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(255, 250, 241, 0.64);
+      margin-bottom: 14px;
+    }
+
+    .stage-card p,
+    .info-card p,
+    .tool-card p,
+    .loop-note p,
+    .reframe-card p,
+    .dmn-reset-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .split,
+    .tool-layout,
+    .curve-layout,
+    .loop-wrap,
+    .practice-grid,
+    .tabs {
+      display: grid;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .split {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .panel {
+      background: rgba(255, 250, 241, 0.75);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .stress-scale {
+      margin-top: 20px;
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(90deg, rgba(110, 143, 127, 0.18), rgba(197, 140, 70, 0.18), rgba(224, 166, 142, 0.22));
+    }
+
+    .scale-line {
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green), var(--amber), #a76352);
+      position: relative;
+      margin: 18px 4px 14px;
+    }
+
+    .scale-line span {
+      position: absolute;
+      top: -8px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      transform: translateX(-50%);
+    }
+
+    .scale-line span:nth-child(1) { left: 18%; }
+    .scale-line span:nth-child(2) { left: 52%; }
+    .scale-line span:nth-child(3) { left: 88%; }
+
+    .scale-labels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .brain-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .brain-item {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 250, 241, 0.68);
+    }
+
+    .brain-label {
+      color: var(--green-dark);
+      font-weight: 800;
+    }
+
+    .brain-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .stress-curve-section {
+      background:
+        radial-gradient(circle at 18% 12%, rgba(110, 143, 127, 0.13), transparent 32rem),
+        linear-gradient(180deg, rgba(255, 250, 241, 0.2), rgba(239, 229, 211, 0.36));
+      border-block: 1px solid var(--line);
+    }
+
+    .curve-layout {
+      grid-template-columns: 0.84fr 1.16fr;
+    }
+
+    .curve-copy {
+      position: sticky;
+      top: 96px;
+      background: rgba(255, 250, 241, 0.74);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .curve-copy p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .curve-key {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .curve-key-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .curve-line-sample {
+      width: 42px;
+      height: 3px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .curve-line-sample.sympathetic {
+      background: var(--green-dark);
+    }
+
+    .curve-line-sample.para {
+      background: #b9b9ad;
+    }
+
+    .curve-cards {
+      display: grid;
+      gap: 18px;
+    }
+
+    .curve-card {
+      background: rgba(255, 250, 241, 0.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: 0 14px 34px rgba(31, 36, 34, 0.06);
+    }
+
+    .curve-card h3 {
+      font-family: var(--serif);
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
+
+    .curve-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .curve-chart {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: #fffaf1;
+    }
+
+    .curve-chart svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .curve-caption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      border-left: 3px solid var(--green);
+      padding-left: 12px;
+    }
+
+    .tool-layout {
+      grid-template-columns: 0.82fr 1.18fr;
+    }
+
+    .tool-stack,
+    .accordion,
+    .loop-note,
+    .worksheet {
+      display: grid;
+      gap: 14px;
+    }
+
+    .accordion-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: rgba(255, 250, 241, 0.78);
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .accordion-trigger span {
+      color: var(--green-dark);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 0 20px 20px;
+      color: var(--muted);
+    }
+
+    .accordion-item.is-open .accordion-content {
+      display: block;
+    }
+
+    .distinguish-section,
+    .dmn-reset-section {
+      background:
+        radial-gradient(circle at 14% 10%, rgba(197, 140, 70, 0.12), transparent 28rem),
+        radial-gradient(circle at 88% 34%, rgba(110, 143, 127, 0.14), transparent 30rem);
+    }
+
+    .triad-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .triad-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 6px;
+      background: var(--green);
+      opacity: 0.72;
+    }
+
+    .triad-card.worry::before {
+      background: var(--amber);
+    }
+
+    .triad-card.anxiety::before {
+      background: var(--blue);
+    }
+
+    .triad-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .triad-card h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      margin-bottom: 0;
+    }
+
+    .triad-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .triad-example,
+    .triad-check,
+    .triad-response,
+    .reset-prompt {
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 15px;
+    }
+
+    .triad-example {
+      background: rgba(31, 36, 34, 0.04);
+      color: var(--ink);
+    }
+
+    .triad-check,
+    .reset-prompt {
+      background: rgba(110, 143, 127, 0.12);
+      border: 1px solid rgba(110, 143, 127, 0.22);
+    }
+
+    .triad-response {
+      background: rgba(197, 140, 70, 0.12);
+      border: 1px solid rgba(197, 140, 70, 0.22);
+    }
+
+    .triad-example strong,
+    .triad-check strong,
+    .triad-response strong,
+    .reset-prompt strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .triad-card-footer {
+      margin-top: auto;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    .loop-section {
+      background:
+        linear-gradient(180deg, rgba(39, 56, 79, 0.06), rgba(255, 250, 241, 0.4));
+      border-block: 1px solid var(--line);
+    }
+
+    .loop-wrap {
+      grid-template-columns: 420px 1fr;
+      align-items: center;
+    }
+
+    .loop-visual {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.72);
+      position: relative;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .loop-core {
+      width: 42%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--paper);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 18px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .loop-dot {
+      position: absolute;
+      width: 132px;
+      min-height: 72px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
+      box-shadow: 0 10px 26px rgba(31, 36, 34, 0.08);
+    }
+
+    .loop-dot strong {
+      display: block;
+      color: var(--green-dark);
+    }
+
+    .loop-dot.one { top: 24px; left: 50%; transform: translateX(-50%); }
+    .loop-dot.two { right: 8px; top: 50%; transform: translateY(-50%); }
+    .loop-dot.three { bottom: 24px; left: 50%; transform: translateX(-50%); }
+    .loop-dot.four { left: 8px; top: 50%; transform: translateY(-50%); }
+
+    .loop-arrow {
+      position: absolute;
+      inset: 52px;
+      border: 2px dashed rgba(64, 95, 83, 0.34);
+      border-radius: 50%;
+    }
+
+    .loop-note article {
+      border-left: 3px solid var(--green);
+      padding: 16px 18px;
+      background: rgba(255, 250, 241, 0.66);
+      border-radius: 0 16px 16px 0;
+    }
+
+    .reframe-grid,
+    .dmn-practice-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .reframe-card,
+    .dmn-practice-strip > div {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      background: rgba(255, 250, 241, 0.72);
+    }
+
+    .reframe-card.dark {
+      background: linear-gradient(145deg, rgba(31, 36, 34, 0.9), rgba(39, 56, 79, 0.92));
+      color: var(--paper);
+    }
+
+    .reframe-card.dark p {
+      color: rgba(255, 250, 241, 0.72);
+    }
+
+    .quote-line {
+      margin: 18px 0 0;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255, 250, 241, 0.12);
+      border: 1px solid rgba(255, 250, 241, 0.18);
+    }
+
+    .tabs {
+      grid-template-columns: 280px 1fr;
+    }
+
+    .tab-buttons {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .tab-button {
+      text-align: left;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.62);
+      border-radius: 16px;
+      padding: 16px;
+      cursor: pointer;
+      color: var(--muted);
+      transition: 0.2s ease;
+    }
+
+    .tab-button.is-active {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .tab-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 241, 0.74);
+      padding: 30px;
+      min-height: 300px;
+      box-shadow: var(--shadow);
+    }
+
+    .tab-panel [data-panel] {
+      display: none;
+    }
+
+    .tab-panel [data-panel].is-active {
+      display: block;
+    }
+
+    .reset-number {
+      display: inline-flex;
+      font-family: var(--serif);
+      font-size: 42px;
+      line-height: 1;
+      color: rgba(64, 95, 83, 0.28);
+      margin-bottom: 16px;
+    }
+
+    .dmn-reset-card h3 {
+      font-family: var(--serif);
+      font-size: 25px;
+    }
+
+    .reset-prompt {
+      margin-top: 18px;
+      color: var(--ink);
+    }
+
+    .dmn-practice-strip {
+      margin-top: 22px;
+    }
+
+    .dmn-practice-strip strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .dmn-practice-strip p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .pathway {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .path-node {
+      min-height: 126px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 250, 241, 0.72);
+      padding: 18px;
+      position: relative;
+    }
+
+    .path-node:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--green-dark);
+      font-weight: 900;
+      z-index: 2;
+    }
+
+    .path-node strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .path-node span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .practice {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(110, 143, 127, 0.16), transparent 28rem),
+        linear-gradient(180deg, rgba(255, 250, 241, 0.54), rgba(239, 229, 211, 0.72));
+      border-top: 1px solid var(--line);
+    }
+
+    .practice-grid {
+      grid-template-columns: 0.95fr 1.05fr;
+    }
+
+    .emotion-wheel-card {
+      background: rgba(255, 250, 241, 0.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .emotion-wheel-card svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .caption {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .field {
+      background: rgba(255, 250, 241, 0.76);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 18px;
+    }
+
+    .field label {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .field p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 92px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 14px;
+      background: rgba(255, 255, 255, 0.62);
+      color: var(--ink);
+      outline: none;
+      line-height: 1.6;
+    }
+
+    textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(110, 143, 127, 0.14);
+    }
+
+    .worksheet-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer {
+      padding: 42px 22px 56px;
+      border-top: 1px solid var(--line);
+      background: rgba(31, 36, 34, 0.04);
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    @media (max-width: 1080px) {
+      .nav-links {
+        gap: 4px;
+      }
+
+      .nav-links a,
+      .download-link {
+        font-size: 13px;
+        padding: 7px 8px;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .split,
+      .tool-layout,
+      .loop-wrap,
+      .practice-grid,
+      .tabs,
+      .curve-layout,
+      .map-grid,
+      .info-grid,
+      .triad-grid,
+      .dmn-reset-grid,
+      .reframe-grid,
+      .dmn-practice-strip,
+      .pathway {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 56px;
+      }
+
+      .path-node:not(:last-child)::after {
+        content: "↓";
+        right: auto;
+        left: 22px;
+        top: auto;
+        bottom: -22px;
+        transform: none;
+      }
+
+      .curve-copy {
+        position: relative;
+        top: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-only {
+        display: inline-flex;
+      }
+
+      .section {
+        padding: 66px 18px;
+      }
+
+      .hero-actions,
+      .worksheet-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-figure-card {
+        padding: 14px;
+        border-radius: 22px;
+      }
+
+      .cycle-visual,
+      .curve-chart {
+        border-radius: 18px;
+      }
+
+      .brain-item {
+        grid-template-columns: 1fr;
+      }
+
+      .scale-labels {
+        grid-template-columns: 1fr;
+      }
+
+      .loop-dot {
+        width: 110px;
+        font-size: 12px;
+      }
+
+      .loop-dot.one { top: 12px; }
+      .loop-dot.two { right: -2px; }
+      .loop-dot.three { bottom: 12px; }
+      .loop-dot.four { left: -2px; }
+
+      .loop-core {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="主導覽">
+      <a class="brand" href="#top" aria-label="回到頁首">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Rewire 讀書會</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#map">導讀地圖</a>
+        <a href="#stress">壓力模型</a>
+        <a href="#curves">壓力曲線</a>
+        <a href="#distinguish">狀態區辨</a>
+        <a href="#loop">焦慮迴路</a>
+        <a href="#networks">大腦網絡</a>
+        <a href="#practice">小練習</a>
+        <button class="download-link" type="button" id="downloadHtml">下載 HTML</button>
+      </div>
+
+      <a class="button secondary mobile-only" href="#practice">進入練習</a>
+    </nav>
+  </header>
+
+  <main id="top" class="page">
+    <section class="section hero">
+      <div>
+        <div class="eyebrow">Neuroplasticity Reading Notes</div>
+        <h1>不是你不夠好，是大腦走慣了舊路。</h1>
+        <p class="lead">
+          這次讀書會會從《Rewire：神經可塑性》出發，看懂壓力、擔憂、焦慮與反芻如何形成自動反應，並練習在警報響起時，為自己多留一個選擇。
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#map">開始導讀</a>
+          <a class="button secondary" href="#practice">先做情緒命名練習</a>
+        </div>
+
+        <div class="meta-strip" aria-label="讀書會資訊">
+          <span class="meta-pill">導讀人：Devin</span>
+        </div>
+      </div>
+
+      <aside class="hero-figure-card" aria-label="壓力與焦慮循環圖">
+        <div class="cycle-header">
+          <span>Core Loop</span>
+          <strong>我們需要打破這個循環</strong>
+        </div>
+
+        <div class="cycle-visual" aria-label="壓力、焦慮與負面自我信念形成循環">
+          <svg viewBox="0 0 640 640" role="img" aria-labelledby="cycleTitle cycleDesc">
+            <title id="cycleTitle">壓力、焦慮與負面自我信念形成循環</title>
+            <desc id="cycleDesc">
+              壓力引發無能力應付情緒、焦慮、容易被觸發、高度警覺、延宕、扭曲的負面自我信念、低自尊、把基本需要列為優先之務，最後回到無助益的應對機制與壓力。
+            </desc>
+
+            <defs>
+              <marker id="arrowHead" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L10,4 L0,8 Z" fill="#5f7f72"></path>
+              </marker>
+
+              <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#1f2422" flood-opacity="0.10"></feDropShadow>
+              </filter>
+            </defs>
+
+            <rect x="0" y="0" width="640" height="640" rx="34" fill="#fffaf1"></rect>
+
+            <circle cx="320" cy="320" r="226" fill="none" stroke="rgba(31,36,34,0.09)" stroke-width="34"></circle>
+
+            <g fill="none" stroke="#5f7f72" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowHead)">
+              <path d="M255 104 C290 82, 348 78, 390 98"></path>
+              <path d="M424 116 C478 146, 512 192, 528 246"></path>
+              <path d="M538 286 C548 342, 536 394, 504 442"></path>
+              <path d="M478 474 C432 522, 374 546, 306 540"></path>
+              <path d="M264 532 C204 512, 158 474, 130 420"></path>
+              <path d="M112 378 C92 320, 96 266, 124 214"></path>
+              <path d="M148 176 C172 142, 205 118, 244 104"></path>
+            </g>
+
+            <g filter="url(#softShadow)">
+              <circle cx="320" cy="320" r="116" fill="#f6f1e8" stroke="rgba(31,36,34,0.14)"></circle>
+            </g>
+
+            <text x="320" y="300" text-anchor="middle" font-size="25" font-weight="800" fill="#1f2422">我們需要</text>
+            <text x="320" y="336" text-anchor="middle" font-size="31" font-weight="900" fill="#1f2422">打破這個循環</text>
+
+            <g font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" fill="#27302d" font-weight="700">
+              <text x="320" y="72" text-anchor="middle" font-size="24" fill="#1f2422" font-weight="900">壓力</text>
+
+              <text x="504" y="145" text-anchor="middle" font-size="21">
+                <tspan x="504" dy="0">無能力</tspan>
+                <tspan x="504" dy="29">應付情緒</tspan>
+              </text>
+
+              <text x="574" y="300" text-anchor="middle" font-size="24" fill="#8a5e2e" font-weight="900">焦慮</text>
+
+              <text x="512" y="415" text-anchor="middle" font-size="21">
+                <tspan x="512" dy="0">容易</tspan>
+                <tspan x="512" dy="29">被觸發</tspan>
+              </text>
+
+              <text x="405" y="558" text-anchor="middle" font-size="21" fill="#8a5e2e" font-weight="900">高度警覺</text>
+
+              <text x="254" y="558" text-anchor="middle" font-size="21">延宕</text>
+
+              <text x="122" y="450" text-anchor="middle" font-size="21" fill="#8a5e2e" font-weight="900">
+                <tspan x="122" dy="0">扭曲的</tspan>
+                <tspan x="122" dy="29">負面自我信念</tspan>
+              </text>
+
+              <text x="72" y="322" text-anchor="middle" font-size="21">低自尊</text>
+
+              <text x="114" y="205" text-anchor="middle" font-size="20">
+                <tspan x="114" dy="0">無能力把</tspan>
+                <tspan x="114" dy="28">基本需要列為</tspan>
+                <tspan x="114" dy="28">優先之務</tspan>
+              </text>
+
+              <text x="184" y="126" text-anchor="middle" font-size="20">
+                <tspan x="184" dy="0">無助益的</tspan>
+                <tspan x="184" dy="28">應對機制</tspan>
+              </text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="hero-figure-note">
+          <div class="hero-note-card">
+            <strong>這張圖在說什麼？</strong>
+            壓力可能一路推動焦慮、高度警覺、延宕與負面自我信念，最後讓我們更難照顧自己的基本需要。
+          </div>
+          <div class="hero-note-card">
+            <strong>讀書會要練習的事</strong>
+            不是把自己變正向，而是看見循環裡可以介入的位置，讓舊反應慢下來。
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="map" class="section">
+      <div class="section-intro">
+        <div class="eyebrow">Reading Map</div>
+        <h2>先把全書看成三段改變路徑</h2>
+        <p>這次導讀聚焦在第一階段：先讓大腦離開長期警報狀態，才有空間改寫自我敘事。</p>
+      </div>
+
+      <div class="map-grid">
+        <article class="stage-card current">
+          <div class="stage-number">01</div>
+          <span class="tag">本次聚焦</span>
+          <h3>擺脫負面情緒</h3>
+          <p>理解壓力如何影響中樞神經系統，辨識負面偏見、反芻與焦慮迴路，為改變奠定基礎。</p>
+        </article>
+
+        <article class="stage-card">
+          <div class="stage-number">02</div>
+          <span class="tag">後續延伸</span>
+          <h3>改變你的敘事</h3>
+          <p>透過結構化步驟重組潛意識，讓「我不夠好」這類內在故事有機會被重新檢視。</p>
+        </article>
+
+        <article class="stage-card">
+          <div class="stage-number">03</div>
+          <span class="tag">維持與增強</span>
+          <h3>增強積極性</h3>
+          <p>支援大腦硬體，讓睡眠、運動、休息、界線與感激練習，成為改變能持續的環境。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="stress" class="section">
+      <div class="split">
+        <div class="section-intro">
+          <div class="eyebrow">Stress is not the enemy</div>
+          <h2>壓力不是敵人，卡在壓力裡才是問題</h2>
+          <p>
+            書中提醒我們，壓力不一定是壞事。適度壓力能提升專注與反應，真正需要注意的是：身體是否能在事件結束後回到恢復狀態。
+          </p>
+
+          <div class="stress-scale">
+            <strong>壓力狀態軸</strong>
+            <div class="scale-line" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="scale-labels">
+              <div>警覺性壓力<br />專注、準備、可使用</div>
+              <div>急性壓力<br />短期能量、解決問題</div>
+              <div>慢性壓力<br />恢復不足、低電量模式</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>警覺性壓力</h3>
+            <p>讓身體準備好面對任務，可能提升專注力與反應速度。它不等於失控。</p>
+          </article>
+
+          <article class="info-card">
+            <h3>急性壓力</h3>
+            <p>短期能量爆發，若能管理得當，可能幫助決策、時間管理與韌性累積。</p>
+          </article>
+
+          <article class="info-card">
+            <h3>慢性壓力</h3>
+            <p>當要求超出恢復能力，大腦會優先維持基本功能，較難反思、學習與建立新習慣。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="split">
+        <div class="panel">
+          <div class="eyebrow">Low Battery Mode</div>
+          <h2>慢性壓力會讓大腦進入低電量模式</h2>
+          <p class="lead">
+            當大腦長期覺得自己在威脅中，它會把資源用來生存，而不是用來改變。這就是為什麼我們在壓力大時，更容易回到熟悉的舊習慣。
+          </p>
+        </div>
+
+        <div class="brain-list">
+          <article class="brain-item">
+            <div class="brain-label">額葉皮質</div>
+            <p>像決策與判斷的控制中心。慢性壓力會削弱它調節情緒警報的能力。</p>
+          </article>
+
+          <article class="brain-item">
+            <div class="brain-label">杏仁核</div>
+            <p>像威脅偵測器。長期壓力會讓它更活躍，對壓力源更容易反應過度。</p>
+          </article>
+
+          <article class="brain-item">
+            <div class="brain-label">海馬體</div>
+            <p>與記憶、學習和關閉壓力反應有關。壓力過高時，整理經驗會變得困難。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="curves" class="section stress-curve-section">
+      <div class="curve-layout">
+        <div class="curve-copy">
+          <div class="eyebrow">Stress Response Curves</div>
+          <h2>壓力反應不可怕，真正消耗人的是無法恢復</h2>
+          <p>
+            急性壓力像一波高峰，身體能在事件後回到尋常狀態；慢性壓力則讓交感神經長時間維持高張，副交感神經難以把系統帶回穩定。
+          </p>
+
+          <div class="curve-key" aria-label="曲線圖圖例">
+            <div class="curve-key-item">
+              <span class="curve-line-sample sympathetic"></span>
+              <span>交感神經作用：警覺、動員、備戰</span>
+            </div>
+            <div class="curve-key-item">
+              <span class="curve-line-sample para"></span>
+              <span>副交感神經作用：恢復、安定、回到基準</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="curve-cards">
+          <article class="curve-card">
+            <h3>急性壓力：上升後能回復</h3>
+            <p>壓力源出現後，交感神經快速動員；事件過後，副交感神經接手，系統逐漸回到穩定。</p>
+
+            <div class="curve-chart">
+              <svg viewBox="0 0 760 390" role="img" aria-label="急性壓力反應曲線">
+                <rect width="760" height="390" rx="24" fill="#fffaf1"></rect>
+                <line x1="92" y1="305" x2="690" y2="305" stroke="rgba(31,36,34,0.36)" stroke-width="2"></line>
+                <line x1="92" y1="64" x2="92" y2="330" stroke="rgba(31,36,34,0.36)" stroke-width="2"></line>
+                <text x="78" y="86" text-anchor="end" font-size="20" font-weight="800" fill="#1f2422">活化</text>
+                <text x="386" y="354" text-anchor="middle" font-size="22" font-weight="800" fill="#1f2422">時間</text>
+                <polygon points="146,120 176,120 154,178 188,178 132,258 148,194 116,194" fill="#c58c46" opacity="0.92"></polygon>
+                <text x="160" y="106" text-anchor="middle" font-size="18" font-weight="800" fill="#8a5e2e">壓力源</text>
+                <path d="M100 300 C140 312, 190 300, 220 226 C252 146, 275 86, 318 94 C365 104, 380 202, 430 243 C500 300, 596 252, 682 270"
+                  fill="none" stroke="#405f53" stroke-width="5" stroke-linecap="round"></path>
+                <path d="M100 242 C160 232, 188 244, 218 292 C250 344, 310 352, 366 330 C414 310, 438 291, 500 300 C570 310, 620 305, 682 305"
+                  fill="none" stroke="#b9b9ad" stroke-width="5" stroke-linecap="round"></path>
+                <text x="270" y="72" text-anchor="middle" font-size="21" font-weight="800" fill="#405f53">交感神經系統</text>
+                <text x="288" y="102" text-anchor="middle" font-size="21" font-weight="800" fill="#405f53">壓力反應</text>
+                <text x="482" y="228" text-anchor="middle" font-size="20" font-weight="800" fill="#6d746f">開始調節</text>
+                <text x="618" y="194" text-anchor="middle" font-size="20" font-weight="800" fill="#1f2422">
+                  <tspan x="618" dy="0">恢復至</tspan>
+                  <tspan x="618" dy="28">尋常狀態</tspan>
+                </text>
+              </svg>
+            </div>
+
+            <div class="curve-caption">
+              讀書會解讀：壓力事件本身不是問題，關鍵是身體能否在事件後完成恢復。
+            </div>
+          </article>
+
+          <article class="curve-card">
+            <h3>慢性壓力：高張後難以回復</h3>
+            <p>當壓力源持續存在，交感神經無法真正降下來，副交感神經的恢復力也被削弱，系統就容易停在低電量模式。</p>
+
+            <div class="curve-chart">
+              <svg viewBox="0 0 760 390" role="img" aria-label="慢性壓力反應曲線">
+                <rect width="760" height="390" rx="24" fill="#fffaf1"></rect>
+                <line x1="92" y1="305" x2="690" y2="305" stroke="rgba(31,36,34,0.36)" stroke-width="2"></line>
+                <line x1="92" y1="64" x2="92" y2="330" stroke="rgba(31,36,34,0.36)" stroke-width="2"></line>
+                <text x="78" y="86" text-anchor="end" font-size="20" font-weight="800" fill="#1f2422">活化</text>
+                <text x="386" y="354" text-anchor="middle" font-size="22" font-weight="800" fill="#1f2422">時間</text>
+                <polygon points="146,120 176,120 154,178 188,178 132,258 148,194 116,194" fill="#c58c46" opacity="0.92"></polygon>
+                <text x="160" y="106" text-anchor="middle" font-size="18" font-weight="800" fill="#8a5e2e">壓力源</text>
+                <path d="M100 300 C142 312, 188 300, 220 220 C252 138, 280 86, 328 102 C372 118, 390 210, 430 246 C500 308, 566 244, 682 270"
+                  fill="none" stroke="#405f53" stroke-width="5" stroke-linecap="round"></path>
+                <path d="M100 242 C160 232, 190 250, 224 300 C258 348, 308 350, 352 324 C404 292, 438 246, 500 244 C570 242, 620 285, 682 300"
+                  fill="none" stroke="#b9b9ad" stroke-width="5" stroke-linecap="round"></path>
+                <text x="280" y="72" text-anchor="middle" font-size="21" font-weight="800" fill="#405f53">交感神經系統</text>
+                <text x="294" y="102" text-anchor="middle" font-size="21" font-weight="800" fill="#405f53">壓力反應</text>
+                <text x="474" y="146" text-anchor="middle" font-size="21" font-weight="800" fill="#8a5e2e">
+                  <tspan x="474" dy="0">副交感神經系統</tspan>
+                  <tspan x="474" dy="30">反彈不足</tspan>
+                </text>
+                <text x="620" y="194" text-anchor="middle" font-size="20" font-weight="800" fill="#1f2422">
+                  <tspan x="620" dy="0">無法恢復至</tspan>
+                  <tspan x="620" dy="28">尋常狀態</tspan>
+                </text>
+              </svg>
+            </div>
+
+            <div class="curve-caption">
+              讀書會解讀：慢性壓力會讓大腦更偏向生存反應，於是更容易回到舊習慣、舊敘事與自動化反應。
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="tool-layout">
+        <div class="section-intro">
+          <div class="eyebrow">Regulation Toolbox</div>
+          <h2>先恢復系統供電，再談改變</h2>
+          <p>改變不是只靠意志力。想建立新的神經路徑，也要照顧睡眠、身體、休息與界線這些「硬體條件」。</p>
+        </div>
+
+        <div class="tool-stack">
+          <article class="tool-card">
+            <strong>快速回到身體：生理性嘆息</strong>
+            <p>連續兩次吸氣，再延長吐氣。適合在焦慮、緊張或情緒高張時使用，幫助身體收到「威脅降低」的訊號。</p>
+          </article>
+
+          <article class="tool-card">
+            <strong>走到戶外，看向遠方</strong>
+            <p>開闊視野與自然環境能降低壓迫感，讓邏輯腦有時間重新介入。</p>
+          </article>
+
+          <div class="accordion" aria-label="恢復工具展開區">
+            <div class="accordion-item is-open">
+              <button class="accordion-trigger" type="button">
+                基礎照顧清單 <span>＋</span>
+              </button>
+              <div class="accordion-content">
+                睡眠、規律運動、冥想、自我催眠、接觸大自然、嗜好、減少不必要負擔、有限攝取咖啡因、學習說「不」而不內疚。
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" type="button">
+                戰略性休息 <span>＋</span>
+              </button>
+              <div class="accordion-content">
+                真正的休息不是繼續滑社群，而是有目的地讓大腦隔絕刺激。可用於午休、會議空檔、重要通話前、演講前或緊張事件後。
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" type="button">
+                與努力掛鉤的獎勵 <span>＋</span>
+              </button>
+              <div class="accordion-content">
+                社群媒體的快速獎勵容易讓動機變得短促。相對地，運動、呼吸練習、完成一個小目標，能帶來較穩定的回饋。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="distinguish" class="section distinguish-section">
+      <div class="section-intro">
+        <div class="eyebrow">Name the State</div>
+        <h2>壓力、擔憂、焦慮：先分清楚，才知道怎麼照顧自己</h2>
+        <p>
+          這三個狀態常常混在一起，但它們需要的回應不太一樣。這裡把「辨識問題」與「對應照顧方式」放在同一張卡裡，讓你可以更快判斷現在該處理任務、整理想法，還是先安撫身體。
+        </p>
+      </div>
+
+      <div class="triad-grid" aria-label="壓力、擔憂、焦慮的區分與回應">
+        <article class="triad-card stress">
+          <div>
+            <div class="triad-label">External demand</div>
+            <h3>壓力</h3>
+            <p>壓力通常是身體面對外在要求或威脅時產生的反應。它比較像是：眼前真的有一件事需要我處理。</p>
+          </div>
+
+          <div class="triad-example">
+            <strong>常見訊號</strong>
+            工作期限逼近、考試快到了、被責備、同時有很多任務；身體可能心跳加快、肌肉緊繃、呼吸變淺。
+          </div>
+
+          <div class="triad-check">
+            <strong>區辨問題</strong>
+            現在有一個明確的外在壓力源嗎？
+          </div>
+
+          <div class="triad-response">
+            <strong>對應照顧方式</strong>
+            把眼前的要求拆小，確認期限、優先順序、可用資源，並看見自己是否需要求助或減少負荷。
+          </div>
+
+          <div class="triad-card-footer">
+            比較像壓力時，第一步通常不是說服自己不要緊張，而是把任務變得可處理。
+          </div>
+        </article>
+
+        <article class="triad-card worry">
+          <div>
+            <div class="triad-label">Future thinking</div>
+            <h3>擔憂</h3>
+            <p>擔憂是大腦試圖解決問題時產生的想法，常以「萬一……怎麼辦？」的形式出現。</p>
+          </div>
+
+          <div class="triad-example">
+            <strong>常見句型</strong>
+            萬一我做不好怎麼辦？他們會不會覺得我很奇怪？這個月錢不夠怎麼辦？
+          </div>
+
+          <div class="triad-check">
+            <strong>區辨問題</strong>
+            我腦中是不是一直在想某個未來的壞結果？
+          </div>
+
+          <div class="triad-response">
+            <strong>對應照顧方式</strong>
+            把「已經發生的事」和「我腦中預想的壞結果」分開，再問自己下一個可行的小步驟是什麼。
+          </div>
+
+          <div class="triad-card-footer">
+            比較像擔憂時，重點是把反覆轉動的想法，整理成可以被檢查的句子。
+          </div>
+        </article>
+
+        <article class="triad-card anxiety">
+          <div>
+            <div class="triad-label">Alarm system</div>
+            <h3>焦慮</h3>
+            <p>焦慮比較像是大腦的警報系統被啟動。有時眼前沒有明確危險，身體卻已經感覺好像有事要發生。</p>
+          </div>
+
+          <div class="triad-example">
+            <strong>常見狀態</strong>
+            害怕、緊繃、不安、坐立難安；注意力一直盯著威脅、風險與最壞結果。
+          </div>
+
+          <div class="triad-check">
+            <strong>區辨問題</strong>
+            即使沒有明確事情發生，我還是感到害怕、緊繃或不安嗎？
+          </div>
+
+          <div class="triad-response">
+            <strong>對應照顧方式</strong>
+            先回到身體，例如做生理性嘆息、看向遠方、放慢動作。等警報降低後，再回來思考問題。
+          </div>
+
+          <div class="triad-card-footer">
+            比較像焦慮時，先降低警報，比立刻分析問題更重要。
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="loop" class="section loop-section">
+      <div class="loop-wrap">
+        <div class="loop-visual" aria-label="焦慮習慣迴路">
+          <div class="loop-arrow"></div>
+          <div class="loop-dot one"><strong>提示</strong>壓力源或內在警報</div>
+          <div class="loop-dot two"><strong>套路</strong>反芻、逃避、滑手機</div>
+          <div class="loop-dot three"><strong>短暫獎勵</strong>不適感降低</div>
+          <div class="loop-dot four"><strong>強化</strong>下次更自動</div>
+          <div class="loop-core">焦慮<br />習慣迴路</div>
+        </div>
+
+        <div>
+          <div class="eyebrow">Habit Loop</div>
+          <h2>焦慮可能不是單一情緒，而是一條被練熟的路</h2>
+          <div class="loop-note">
+            <article>
+              <h3>第一步：看見提示</h3>
+              <p>最近是什麼事件、訊息、關係或念頭，最容易讓你進入警報狀態？</p>
+            </article>
+
+            <article>
+              <h3>第二步：辨識套路</h3>
+              <p>你通常怎麼讓自己暫時舒服一點？反覆思考、討拍、逃避、滑手機，還是讓自己更忙？</p>
+            </article>
+
+            <article>
+              <h3>第三步：重新選擇獎勵</h3>
+              <p>真正恢復的獎勵，應該讓你回到身體與現實，而不是讓舊迴路更強。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-intro">
+        <div class="eyebrow">Negative Bias & Reframe</div>
+        <h2>在重新架構之前，先區分事實與擔憂</h2>
+        <p>負面偏見會讓人高估壞事、低估好事。當情緒很強時，我們常把「我很緊張」誤讀成「我一定搞砸了」。</p>
+      </div>
+
+      <div class="reframe-grid">
+        <article class="reframe-card dark">
+          <span class="tag">舊路徑</span>
+          <h3>自動負面推論</h3>
+          <p>「我剛才講得很爛。」<br />「別人一定覺得我很糟。」<br />「我就是不夠好。」</p>
+          <div class="quote-line">情緒很真實，但它不一定等於事實。</div>
+        </article>
+
+        <article class="reframe-card">
+          <span class="tag">新路徑</span>
+          <h3>重新架構問題</h3>
+          <p>
+            這是事實，還是擔憂？<br />
+            我是否把緊張誤認為失敗？<br />
+            有沒有另一個更貼近現實的解釋？
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="networks" class="section">
+      <div class="section-intro">
+        <div class="eyebrow">Brain Networks</div>
+        <h2>三個大腦網絡：理解內在思考與外在任務如何切換</h2>
+        <p>這段名詞較多，所以用切換面板呈現。讀書會帶領時可以只抓每個網絡的「生活版意思」。</p>
+      </div>
+
+      <div class="tabs">
+        <div class="tab-buttons" role="tablist" aria-label="大腦網絡切換">
+          <button class="tab-button is-active" type="button" data-tab="dmn">DMN 預設模式網絡</button>
+          <button class="tab-button" type="button" data-tab="cen">CEN 中央執行網絡</button>
+          <button class="tab-button" type="button" data-tab="sn">SN 顯著性網絡</button>
+        </div>
+
+        <div class="tab-panel">
+          <article class="is-active" data-panel="dmn">
+            <h3>DMN：內在敘事與反芻的背景音</h3>
+            <p>與神遊、創造性、自我指涉思考、自傳式記憶有關。當它過度活躍時，可能讓負面自我故事反覆播放。</p>
+          </article>
+
+          <article data-panel="cen">
+            <h3>CEN：專注、判斷與解決問題</h3>
+            <p>負責外部任務、注意力、決策與問題解決。當壓力太高，這個網絡比較難穩定介入。</p>
+          </article>
+
+          <article data-panel="sn">
+            <h3>SN：幫你判斷什麼值得注意</h3>
+            <p>協助在內在思考與外在任務之間切換。它像注意力的轉接站，幫助大腦判斷刺激的重要性。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dmn-reset-section">
+      <div class="section-intro">
+        <div class="eyebrow">DMN Reset</div>
+        <h2>當預設模式網絡陷入負面循環，先不要急著相信每個念頭</h2>
+        <p>
+          預設模式網絡會讓我們回到內在思考、自我敘事與過去記憶。它有助於反思與創造，但當它過度活躍時，也可能讓負面自我指涉反覆播放，形成反芻。
+        </p>
+      </div>
+
+      <div class="dmn-reset-grid">
+        <article class="dmn-reset-card">
+          <span class="reset-number">01</span>
+          <h3>用後設認知看見念頭</h3>
+          <p>
+            先把自己從念頭裡退一步，觀察：「我現在正在想什麼？這個想法出現過幾次？它通常在什麼情境被觸發？」
+          </p>
+          <div class="reset-prompt">
+            <strong>練習提問</strong>
+            這是一個事實，還是一個正在重播的解釋？
+          </div>
+        </article>
+
+        <article class="dmn-reset-card">
+          <span class="reset-number">02</span>
+          <h3>不要把負面反應誤認為全部事實</h3>
+          <p>
+            大腦本來就比較容易注意負面刺激，所以強烈的不安不代表它一定比較真實。先承認情緒存在，再檢查它是否過度放大。
+          </p>
+          <div class="reset-prompt">
+            <strong>練習提問</strong>
+            有沒有另一個更貼近現實、但沒那麼極端的說法？
+          </div>
+        </article>
+
+        <article class="dmn-reset-card">
+          <span class="reset-number">03</span>
+          <h3>把思想導向有結構的流向</h3>
+          <p>
+            反芻常像背景音一樣無限循環。寫日記、向朋友傾訴、重新架構想法，都能把模糊的念頭整理成可被理解的敘事。
+          </p>
+          <div class="reset-prompt">
+            <strong>練習提問</strong>
+            發生了什麼？我怎麼解讀？我下一步能做什麼？
+          </div>
+        </article>
+      </div>
+
+      <div class="dmn-practice-strip">
+        <div>
+          <strong>兩個快速介入方式</strong>
+          <p>冥想能幫助打斷負面思想的慣性；走到戶外、接觸大自然，也能讓大腦離開過度自我指涉的狀態。</p>
+        </div>
+        <div>
+          <strong>一個提醒</strong>
+          <p>忙不停有時不是高效率，而是在用外部任務暫時關掉反芻。真正的練習，是能回來觀察自己的內在狀態。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-intro">
+        <div class="eyebrow">Thoughts Become Beliefs</div>
+        <h2>微小的自我對話，會慢慢變成我們理解自己的方式</h2>
+        <p>書中將言語、思想、感受、行為與信念串在一起。這不是要我們控制每個念頭，而是練習觀察：哪一條路正在被我反覆加深？</p>
+      </div>
+
+      <div class="pathway" aria-label="思想變成信念的路徑">
+        <div class="path-node"><strong>言語</strong><span>我怎麼描述自己與事件</span></div>
+        <div class="path-node"><strong>思想</strong><span>我腦中重複播放的解釋</span></div>
+        <div class="path-node"><strong>感受</strong><span>身體與情緒如何回應</span></div>
+        <div class="path-node"><strong>行為</strong><span>我因此選擇或逃避什麼</span></div>
+        <div class="path-node"><strong>信念</strong><span>我逐漸相信自己是誰</span></div>
+      </div>
+    </section>
+
+    <section id="practice" class="section practice">
+      <div class="section-intro">
+        <div class="eyebrow">Practice</div>
+        <h2>小練習：從命名情緒開始，找出一條可以改寫的路徑</h2>
+        <p>情緒之輪不是要你把自己分類，而是幫你把模糊的不舒服說清楚。情緒一旦被命名，前額葉皮質就比較有機會重新介入。</p>
+      </div>
+
+      <div class="practice-grid">
+        <figure class="emotion-wheel-card">
+          <svg viewBox="0 0 700 700" role="img" aria-label="情緒之輪參考圖">
+            <rect width="700" height="700" fill="#fffaf1" rx="24"></rect>
+
+            <g transform="translate(350 350)">
+              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#1f2422" opacity="0.86"></ellipse>
+              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#6d746f" opacity="0.62" transform="rotate(45)"></ellipse>
+              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#1f2422" opacity="0.42" transform="rotate(90)"></ellipse>
+              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#b7bbb7" opacity="0.62" transform="rotate(135)"></ellipse>
+              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#6d746f" opacity="0.7" transform="rotate(180)"></ellipse>
+              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#1f2422" opacity="0.62" transform="rotate(225)"></ellipse>
+              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#b7bbb7" opacity="0.75" transform="rotate(270)"></ellipse>
+              <ellipse cx="0" cy="-145" rx="55" ry="190" fill="#6d746f" opacity="0.55" transform="rotate(315)"></ellipse>
+
+              <circle r="245" fill="none" stroke="#1f2422" stroke-opacity="0.28" stroke-width="2"></circle>
+              <circle r="165" fill="none" stroke="#1f2422" stroke-opacity="0.26" stroke-width="2"></circle>
+              <circle r="86" fill="none" stroke="#1f2422" stroke-opacity="0.24" stroke-width="2"></circle>
+
+              <g stroke="#1f2422" stroke-opacity="0.16">
+                <line x1="0" y1="-245" x2="0" y2="245"></line>
+                <line x1="-245" y1="0" x2="245" y2="0"></line>
+                <line x1="-173" y1="-173" x2="173" y2="173"></line>
+                <line x1="173" y1="-173" x2="-173" y2="173"></line>
+              </g>
+            </g>
+
+            <g font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" text-anchor="middle" fill="#1f2422" font-weight="700">
+              <text x="350" y="48" font-size="28">情緒之輪</text>
+              <text x="350" y="184" font-size="21" fill="#fffaf1">靜謐</text>
+              <text x="350" y="248" font-size="21" fill="#fffaf1">喜樂</text>
+              <text x="350" y="316" font-size="21" fill="#fffaf1">狂喜</text>
+
+              <text x="470" y="226" font-size="20">接受</text>
+              <text x="444" y="287" font-size="20">信賴</text>
+              <text x="407" y="339" font-size="20">仰慕</text>
+
+              <text x="528" y="356" font-size="20" fill="#fffaf1">恐懼</text>
+              <text x="588" y="356" font-size="20">害怕</text>
+              <text x="637" y="356" font-size="20">憂懼</text>
+
+              <text x="457" y="434" font-size="20">驚異</text>
+              <text x="518" y="484" font-size="20">驚訝</text>
+              <text x="570" y="532" font-size="20">焦躁不安</text>
+
+              <text x="350" y="424" font-size="21">悲傷</text>
+              <text x="350" y="488" font-size="21">難過</text>
+              <text x="350" y="552" font-size="21">憂思</text>
+
+              <text x="254" y="438" font-size="20" fill="#fffaf1">作嘔</text>
+              <text x="194" y="496" font-size="20" fill="#fffaf1">無聊</text>
+              <text x="151" y="556" font-size="20">懊悔</text>
+
+              <text x="173" y="356" font-size="20">暴怒</text>
+              <text x="112" y="356" font-size="20">憤怒</text>
+              <text x="64" y="356" font-size="20">惱怒</text>
+
+              <text x="252" y="288" font-size="20" fill="#fffaf1">警覺</text>
+              <text x="227" y="228" font-size="20" fill="#fffaf1">預期</text>
+              <text x="183" y="172" font-size="20" fill="#fffaf1">感興趣</text>
+
+              <text x="228" y="128" font-size="18">樂觀</text>
+              <text x="472" y="128" font-size="18">愛</text>
+              <text x="625" y="250" font-size="18">順服</text>
+              <text x="626" y="461" font-size="18">敬畏</text>
+              <text x="485" y="642" font-size="18">不以為然</text>
+              <text x="216" y="642" font-size="18">懊悔</text>
+              <text x="75" y="462" font-size="18">鄙視</text>
+              <text x="74" y="250" font-size="18">攻擊性</text>
+            </g>
+
+            <text x="22" y="676" font-size="16" fill="#6d746f">參考：普拉奇克博士，1980</text>
+          </svg>
+
+          <figcaption class="caption">
+            讀書會使用方式：先選核心情緒，再往外圈找更精準的詞。
+          </figcaption>
+        </figure>
+
+        <form class="worksheet" id="worksheet">
+          <div class="field">
+            <label for="emotion">1. 我現在最接近哪一個情緒？</label>
+            <p>可以先寫大方向，再從情緒之輪往外圈找更精準的詞。</p>
+            <textarea id="emotion" placeholder="例如：我以為自己只是壓力大，但更精準地說，可能是焦躁不安與害怕。"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="story">2. 這個情緒背後，是事實、擔憂，還是自我敘事？</label>
+            <p>練習把「發生了什麼」和「我腦中補上的解釋」分開。</p>
+            <textarea id="story" placeholder="事實是……；我的擔憂是……；我反覆說給自己聽的故事是……"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="newPath">3. 我想削弱哪條舊路徑？想練習哪個新反應？</label>
+            <p>新反應不用很大，可以是一個呼吸、一個暫停、一句重新架構問題。</p>
+            <textarea id="newPath" placeholder="舊路徑：一焦慮就反覆檢查。新反應：先做一次生理性嘆息，再問自己這是事實還是擔憂。"></textarea>
+          </div>
+
+          <div class="worksheet-actions">
+            <button class="button primary" type="button" id="copyPractice">複製我的練習內容</button>
+            <button class="button secondary" type="reset">清空重寫</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>《Rewire：神經可塑性》讀書會導讀頁</strong><br />
+        導讀人：Devin
+      </div>
+      <div>
+        本頁為讀書會導讀與自我觀察練習頁。
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const accordionItems = document.querySelectorAll(".accordion-item");
+
+    accordionItems.forEach((item) => {
+      const trigger = item.querySelector(".accordion-trigger");
+      trigger.addEventListener("click", () => {
+        item.classList.toggle("is-open");
+      });
+    });
+
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabPanels = document.querySelectorAll("[data-panel]");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.tab;
+
+        tabButtons.forEach((btn) => btn.classList.remove("is-active"));
+        tabPanels.forEach((panel) => panel.classList.remove("is-active"));
+
+        button.classList.add("is-active");
+        document.querySelector(`[data-panel="${target}"]`).classList.add("is-active");
+      });
+    });
+
+    const copyButton = document.getElementById("copyPractice");
+
+    copyButton.addEventListener("click", async () => {
+      const emotion = document.getElementById("emotion").value.trim();
+      const story = document.getElementById("story").value.trim();
+      const newPath = document.getElementById("newPath").value.trim();
+
+      const content = [
+        "《Rewire：神經可塑性》讀書會小練習",
+        "",
+        "1. 我現在最接近的情緒：",
+        emotion || "（尚未填寫）",
+        "",
+        "2. 這個情緒背後，是事實、擔憂，還是自我敘事？",
+        story || "（尚未填寫）",
+        "",
+        "3. 我想削弱的舊路徑，以及想練習的新反應：",
+        newPath || "（尚未填寫）"
+      ].join("\n");
+
+      try {
+        await navigator.clipboard.writeText(content);
+        copyButton.textContent = "已複製";
+        setTimeout(() => {
+          copyButton.textContent = "複製我的練習內容";
+        }, 1800);
+      } catch (error) {
+        alert("目前瀏覽器不支援自動複製，請手動選取文字。");
+      }
+    });
+
+    const downloadButton = document.getElementById("downloadHtml");
+
+    downloadButton.addEventListener("click", () => {
+      const html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "rewire-reading-club.html";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
