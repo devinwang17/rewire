@@ -1478,6 +1478,73 @@
       font-weight: 700;
     }
 
+    .practice-visual {
+      border: 1px solid rgba(64, 95, 83, 0.18);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(197, 140, 70, 0.12), transparent 12rem),
+        rgba(255, 250, 241, 0.62);
+      padding: 16px;
+    }
+
+    .practice-postpone {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 74px;
+      min-width: 160px;
+      padding: 14px 20px;
+      border-radius: 18px 18px 18px 4px;
+      background: rgba(197, 140, 70, 0.16);
+      border: 1px solid rgba(197, 140, 70, 0.28);
+      color: var(--amber-dark);
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 900;
+      transform: rotate(-2deg);
+      box-shadow: 0 12px 24px rgba(31, 36, 34, 0.06);
+    }
+
+    .practice-quote-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .practice-quote {
+      display: inline-flex;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(31, 36, 34, 0.06);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .practice-timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 10px 0 2px;
+    }
+
+    .practice-timeline::before {
+      content: "";
+      grid-column: 2;
+      grid-row: 1;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(110, 143, 127, 0.35), rgba(197, 140, 70, 0.4));
+    }
+
+    .practice-timeline span:first-child { grid-column: 1; }
+    .practice-timeline span:last-child { grid-column: 3; }
+
     .closing-card {
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
@@ -1727,7 +1794,7 @@
         <div class="eyebrow">Neuroplasticity Reading Notes</div>
         <h1>《神經可塑性》：今天開始打破負面循環</h1>
         <p class="lead">
-          先寫一下我的小註解：雖然書中很多概念，早見於各種書籍文章，但從神經科學理解一次還是很有趣。很多時候，光是理解為何發生，似乎就能釋然一點，也更知道如何鬆動既有信念和行為模式。儘管知易行難，但還是可以慢慢練習XD
+          先寫下我的小註解：雖然書中很多概念，早見於各種書籍文章，但從神經科學理解一次還是很有趣。很多時候，光是理解為何發生，似乎就能釋然一點，也更知道如何鬆動既有信念和行為模式。儘管知易行難，但還是可以慢慢練習XD
         </p>
 
         <div class="hero-actions">
@@ -1889,14 +1956,20 @@
 
             <div class="practice-content">
               <p class="practice-lead">
-                先不用急著解決，只是把那個「一直想改變、但總是重複」的模式看清楚。
+                當面臨壓力和焦慮時，你會難以做出決策與改變。
               </p>
 
+              <div class="practice-visual" aria-label="改天再說視覺提示">
+                <div class="practice-postpone">改天再說</div>
+              </div>
+
               <ol class="practice-questions">
-                <li>我一直想改變，但還沒真正開始的是什麼？</li>
-                <li>每次想改變時，最大的壓力或阻力通常來自哪裡？</li>
-                <li>我最常出現的反應是逃避、拖延、合理化、放棄，還是其他？</li>
-                <li>這個反應短期保護了我什麼？長期又讓我失去了什麼？</li>
+                <li>我一直想改變的是？</li>
+                <li>每次想改變時，最大的壓力來自？</li>
+                <li>我最常出現的反應是：逃避、拖延、合理化、放棄、其他</li>
+                <li>這個反應短期幫助了我什麼？</li>
+                <li>長期又讓我失去了什麼？</li>
+                <li>如果這個反應其實是在保護你，它想保護你的是什麼？</li>
               </ol>
             </div>
           </details>
@@ -2384,7 +2457,7 @@
           <summary>
             <span class="practice-summary-text">
               <span class="practice-kicker">Pause & Reflect</span>
-              <span class="practice-title">小練習：那些單看沒什麼的小事</span>
+              <span class="practice-title">小練習：那些沒什麼的小事</span>
             </span>
             <span class="practice-open-label">展開題目</span>
           </summary>
@@ -2394,19 +2467,34 @@
               微創傷常常不是單一大事件，而是很多小訊號長期累積。這組練習是為了看見「累積」本身。
             </p>
 
+            <div class="practice-visual" aria-label="微創傷常見語句">
+              <div class="practice-quote-row">
+                <span class="practice-quote">你想太多了</span>
+                <span class="practice-quote">這有什麼好累的</span>
+                <span class="practice-quote">別人都可以</span>
+              </div>
+            </div>
+
             <div class="practice-examples" aria-label="小事件例子">
-              <span class="practice-example">被打斷</span>
-              <span class="practice-example">意見被忽略</span>
+              <span class="practice-example">經常被打斷</span>
+              <span class="practice-example">被忽略意見</span>
               <span class="practice-example">長期不被回應</span>
               <span class="practice-example">一直被催促</span>
               <span class="practice-example">長期高壓</span>
               <span class="practice-example">無法表達真實想法</span>
             </div>
 
+            <div class="practice-visual" aria-label="一個月前到今天的時間線">
+              <p class="practice-lead">請在紙上畫一條線。左邊是「一個月前」，右邊是「今天」。</p>
+              <div class="practice-timeline" aria-hidden="true">
+                <span>一個月前</span>
+                <span>今天</span>
+              </div>
+            </div>
+
             <ol class="practice-questions">
-              <li>如果畫一條從一個月前到今天的時間線，最近有哪些小事讓我慢慢耗損？</li>
-              <li>哪一件事單獨看好像沒什麼，但累積起來影響最大？</li>
-              <li>如果這些小事都在傳遞同一個訊號，那個訊號會是什麼？</li>
+              <li>沿著時間線，標記最近讓你慢慢耗損的小事件。</li>
+              <li>哪一件事單獨看沒什麼，但累積起來影響最大？</li>
             </ol>
           </div>
         </details>
@@ -2491,9 +2579,9 @@
             </p>
 
             <ol class="practice-questions">
-              <li>我一直沒有做的一件事是什麼？</li>
-              <li>我認為自己沒有做的原因是什麼？</li>
-              <li>如果把這個原因濃縮成一句話，那句話會是什麼？</li>
+              <li>我一直沒有做的一件事是？</li>
+              <li>我認為原因是？</li>
+              <li>如果把原因濃縮成一句話，那句話是？</li>
               <li>因為相信這句話，我避開了哪些事情？</li>
               <li>這些年來，我因此錯過了什麼？</li>
             </ol>
@@ -2569,7 +2657,7 @@
           <summary>
             <span class="practice-summary-text">
               <span class="practice-kicker">Pause & Reflect</span>
-              <span class="practice-title">小練習：理想中的自己會怎麼回應？</span>
+              <span class="practice-title">小練習：理想自我拼貼</span>
             </span>
             <span class="practice-open-label">展開題目</span>
           </summary>
@@ -2580,19 +2668,14 @@
             </p>
 
             <div class="practice-examples" aria-label="理想自我可能具備的特質">
-              <span class="practice-example">更能表達</span>
-              <span class="practice-example">比較不自責</span>
-              <span class="practice-example">能夠行動</span>
-              <span class="practice-example">能照顧界線</span>
-              <span class="practice-example">能面對失誤</span>
+              <span class="practice-example">懂得察言觀色</span>
+              <span class="practice-example">懂得表達</span>
+              <span class="practice-example">行動力強</span>
             </div>
 
             <ol class="practice-questions">
-              <li>如果是理想中的自己，面對被誤解時，會怎麼回應？</li>
-              <li>如果是理想中的自己，面對被拒絕、朋友失約、發現自己犯錯，會怎麼回應？</li>
-              <li>如果看見別人成功，理想中的自己會對自己說什麼？</li>
-              <li>10 年後的自己走進來，會說現在的我最常做的一件小事是什麼？</li>
-              <li>今天我可以先練哪一個很小的行動？</li>
+              <li>理想的自我，在被誤解、被拒絕、朋友失約、發現自己犯錯、看見別人成功時，會有什麼反應？</li>
+              <li>10年後的自己走進來，會說這個人最常做的一件小事是什麼？</li>
             </ol>
           </div>
         </details>
@@ -2603,7 +2686,7 @@
       <details class="practice-toggle">
         <summary>
           <span class="practice-summary-text">
-            <span class="practice-kicker">Takeaway Practice</span>
+            <span class="practice-kicker">Takeaways and Action Plan</span>
             <span class="practice-title">帶走一個小練習</span>
           </span>
           <span class="practice-open-label">展開題目</span>
@@ -2615,9 +2698,9 @@
           </p>
 
           <ol class="practice-questions">
-            <li>今天記一個小得意：有哪一件小事，我其實做得還不錯？</li>
-            <li>今天做一分鐘身體掃描：我現在身體哪裡緊？哪裡比較放鬆？</li>
-            <li>今天寫下一件感謝：有什麼人、事、物，讓我今天多了一點支撐？</li>
+            <li>每天記一個小得意</li>
+            <li>每天一分鐘身體掃描</li>
+            <li>每天一次感恩</li>
           </ol>
         </div>
       </details>
@@ -2628,7 +2711,7 @@
         <div class="eyebrow">Closing Note</div>
         <h2>重塑大腦，是讓未來多一條路</h2>
         <p>
-          舊路徑曾經可能保護過我們，所以改變不需要從責備開始。今天的導讀想留下的是：當壓力、擔憂、焦慮、失去或舊信念出現時，我們可以更早看見自己正在走哪條路，並開始練習下一個比較照顧自己的選擇。
+          舊路徑曾經可能保護過我們，所以改變不需要從責備開始。今天的導讀想留下的是：當壓力、擔憂、焦慮或舊信念出現時，我們可以更早看見自己正在走哪條路，並開始練習下一個比較照顧自己的選擇。
         </p>
       </div>
     </section>
