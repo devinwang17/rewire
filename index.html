@@ -1274,6 +1274,10 @@
       border-top: 1px solid var(--line);
     }
 
+    #newpath {
+      padding-bottom: 52px;
+    }
+
     .path-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1426,6 +1430,19 @@
       color: var(--muted);
     }
 
+    .practice-subtitle {
+      display: inline-flex;
+      align-self: start;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(64, 95, 83, 0.1);
+      border: 1px solid rgba(64, 95, 83, 0.2);
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
     .practice-questions {
       display: grid;
       gap: 10px;
@@ -1461,7 +1478,9 @@
       font-weight: 900;
     }
 
-    .practice-examples {
+    .practice-examples,
+    .practice-quote-row,
+    .practice-time-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -1487,6 +1506,11 @@
       padding: 16px;
     }
 
+    .practice-visual.stack {
+      display: grid;
+      gap: 14px;
+    }
+
     .practice-postpone {
       display: inline-flex;
       align-items: center;
@@ -1505,12 +1529,6 @@
       box-shadow: 0 12px 24px rgba(31, 36, 34, 0.06);
     }
 
-    .practice-quote-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
     .practice-quote {
       display: inline-flex;
       padding: 8px 11px;
@@ -1520,6 +1538,19 @@
       color: var(--ink);
       font-size: 14px;
       font-weight: 800;
+    }
+
+    .practice-time-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(110, 143, 127, 0.1);
+      border: 1px solid rgba(110, 143, 127, 0.2);
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 900;
     }
 
     .practice-timeline {
@@ -1544,6 +1575,57 @@
 
     .practice-timeline span:first-child { grid-column: 1; }
     .practice-timeline span:last-child { grid-column: 3; }
+
+    .body-map-card {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 18px;
+      align-items: center;
+      border: 1px solid rgba(64, 95, 83, 0.18);
+      border-radius: 22px;
+      background: rgba(255, 250, 241, 0.62);
+      padding: 18px;
+    }
+
+    .body-map-figure {
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at center, rgba(110, 143, 127, 0.11), transparent 68%),
+        rgba(246, 241, 232, 0.58);
+      border: 1px solid var(--line);
+      padding: 12px;
+    }
+
+    .body-map-figure svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .body-map-notes {
+      display: grid;
+      gap: 10px;
+    }
+
+    .body-map-notes strong {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .body-map-notes p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .final-practice-section {
+      padding-top: 0;
+      padding-bottom: 48px;
+    }
+
+    .final-practice-section + .section {
+      padding-top: 0;
+    }
 
     .closing-card {
       border: 1px solid var(--line);
@@ -1605,7 +1687,8 @@
       .path-grid,
       .pathway,
       .story-strip,
-      .quick-tools {
+      .quick-tools,
+      .body-map-card {
         grid-template-columns: 1fr;
       }
 
@@ -1630,6 +1713,10 @@
         bottom: -22px;
         transform: none;
       }
+
+      .body-map-figure {
+        max-width: 280px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -1644,6 +1731,19 @@
       }
 
       .section { padding: 66px 18px; }
+
+      #newpath {
+        padding-bottom: 42px;
+      }
+
+      .final-practice-section {
+        padding-top: 0;
+        padding-bottom: 38px;
+      }
+
+      .final-practice-section + .section {
+        padding-top: 0;
+      }
 
       .hero-actions { flex-direction: column; }
 
@@ -1743,6 +1843,21 @@
       .practice-title {
         font-size: 21px;
       }
+
+      .practice-timeline {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .practice-timeline::before {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .practice-timeline span:first-child,
+      .practice-timeline span:last-child {
+        grid-column: 1;
+      }
     }
   </style>
 </head>
@@ -1794,7 +1909,7 @@
         <div class="eyebrow">Neuroplasticity Reading Notes</div>
         <h1>《神經可塑性》：今天開始打破負面循環</h1>
         <p class="lead">
-          先寫下我的小註解：雖然書中很多概念，早見於各種書籍文章，但從神經科學理解一次還是很有趣。很多時候，光是理解為何發生，似乎就能釋然一點，也更知道如何鬆動既有信念和行為模式。儘管知易行難，但還是可以慢慢練習XD
+          先寫一下我的小註解：雖然書中很多概念，早見於各種書籍文章，但從神經科學理解一次還是很有趣。很多時候，光是理解為何發生，似乎就能釋然一點，也更知道如何鬆動既有信念和行為模式。儘管知易行難，但還是可以慢慢練習XD
         </p>
 
         <div class="hero-actions">
@@ -1959,8 +2074,12 @@
                 當面臨壓力和焦慮時，你會難以做出決策與改變。
               </p>
 
-              <div class="practice-visual" aria-label="改天再說視覺提示">
+              <div class="practice-visual stack" aria-label="改天再說與常見反應提示">
                 <div class="practice-postpone">改天再說</div>
+                <div class="practice-quote-row">
+                  <span class="practice-quote">完美與控制</span>
+                  <span class="practice-quote">急著回應</span>
+                </div>
               </div>
 
               <ol class="practice-questions">
@@ -1971,6 +2090,11 @@
                 <li>長期又讓我失去了什麼？</li>
                 <li>如果這個反應其實是在保護你，它想保護你的是什麼？</li>
               </ol>
+
+              <div class="practice-time-row" aria-label="練習時間">
+                <span class="practice-time-item">個人思考 5分鐘</span>
+                <span class="practice-time-item">分享 15分鐘</span>
+              </div>
             </div>
           </details>
         </div>
@@ -2463,9 +2587,7 @@
           </summary>
 
           <div class="practice-content">
-            <p class="practice-lead">
-              微創傷常常不是單一大事件，而是很多小訊號長期累積。這組練習是為了看見「累積」本身。
-            </p>
+            <span class="practice-subtitle">微創傷</span>
 
             <div class="practice-visual" aria-label="微創傷常見語句">
               <div class="practice-quote-row">
@@ -2482,10 +2604,12 @@
               <span class="practice-example">一直被催促</span>
               <span class="practice-example">長期高壓</span>
               <span class="practice-example">無法表達真實想法</span>
+              <span class="practice-example">近期</span>
+              <span class="practice-example">改掉不好意思的發語詞</span>
             </div>
 
             <div class="practice-visual" aria-label="一個月前到今天的時間線">
-              <p class="practice-lead">請在紙上畫一條線。左邊是「一個月前」，右邊是「今天」。</p>
+              <p class="practice-lead">請在紙上畫一條線，左邊是「一個月前」，右邊是「今天」</p>
               <div class="practice-timeline" aria-hidden="true">
                 <span>一個月前</span>
                 <span>今天</span>
@@ -2493,9 +2617,14 @@
             </div>
 
             <ol class="practice-questions">
-              <li>沿著時間線，標記最近讓你慢慢耗損的小事件。</li>
+              <li>沿著時間線，回想並標記最近你覺得讓你感到消耗的小事</li>
               <li>哪一件事單獨看沒什麼，但累積起來影響最大？</li>
             </ol>
+
+            <div class="practice-time-row" aria-label="練習時間">
+              <span class="practice-time-item">個人思考 5分鐘</span>
+              <span class="practice-time-item">分享 15分鐘</span>
+            </div>
           </div>
         </details>
       </div>
@@ -2574,17 +2703,23 @@
           </summary>
 
           <div class="practice-content">
+            <span class="practice-subtitle">確認偏誤與自證預言</span>
             <p class="practice-lead">
               有些信念不只影響我們怎麼想，也會影響我們不敢做什麼、避開什麼。
             </p>
 
             <ol class="practice-questions">
-              <li>我一直沒有做的一件事是？</li>
+              <li>我一直想做卻沒有做的一件事是？</li>
               <li>我認為原因是？</li>
               <li>如果把原因濃縮成一句話，那句話是？</li>
               <li>因為相信這句話，我避開了哪些事情？</li>
               <li>這些年來，我因此錯過了什麼？</li>
             </ol>
+
+            <div class="practice-time-row" aria-label="練習時間">
+              <span class="practice-time-item">個人思考 5分鐘</span>
+              <span class="practice-time-item">分享 15分鐘</span>
+            </div>
           </div>
         </details>
       </div>
@@ -2663,14 +2798,54 @@
           </summary>
 
           <div class="practice-content">
-            <p class="practice-lead">
-              這不是要逼自己立刻變成另一個人，而是先替「新的反應」描出一個方向。
-            </p>
-
             <div class="practice-examples" aria-label="理想自我可能具備的特質">
+              <span class="practice-example">行動力強</span>
               <span class="practice-example">懂得察言觀色</span>
               <span class="practice-example">懂得表達</span>
-              <span class="practice-example">行動力強</span>
+              <span class="practice-example">更有耐心</span>
+            </div>
+
+            <p class="practice-lead">
+              如果大腦可以改變，我們想強化／弱化什麼，成為什麼樣的人？
+            </p>
+
+            <div class="practice-time-row" aria-label="練習時間">
+              <span class="practice-time-item">個人思考 5分鐘</span>
+              <span class="practice-time-item">分享 15分鐘</span>
+            </div>
+
+            <div class="body-map-card" aria-label="簡易人體線條圖">
+              <div class="body-map-figure">
+                <svg viewBox="0 0 260 360" role="img" aria-label="簡易人體線條圖，供填寫理想自我">
+                  <rect width="260" height="360" rx="22" fill="#fffaf1"></rect>
+                  <circle cx="130" cy="58" r="28" fill="none" stroke="#405f53" stroke-width="4"></circle>
+                  <path d="M130 88 C130 120, 130 158, 130 198" fill="none" stroke="#405f53" stroke-width="5" stroke-linecap="round"></path>
+                  <path d="M130 118 C96 130, 72 150, 54 176" fill="none" stroke="#405f53" stroke-width="5" stroke-linecap="round"></path>
+                  <path d="M130 118 C164 130, 188 150, 206 176" fill="none" stroke="#405f53" stroke-width="5" stroke-linecap="round"></path>
+                  <path d="M130 198 C108 230, 92 262, 78 312" fill="none" stroke="#405f53" stroke-width="5" stroke-linecap="round"></path>
+                  <path d="M130 198 C152 230, 168 262, 182 312" fill="none" stroke="#405f53" stroke-width="5" stroke-linecap="round"></path>
+
+                  <path d="M62 82 C42 74, 30 64, 22 50" fill="none" stroke="#c58c46" stroke-width="2" stroke-linecap="round"></path>
+                  <text x="18" y="44" font-size="13" font-weight="800" fill="#8a5e2e">想法</text>
+
+                  <path d="M192 94 C220 84, 234 72, 242 58" fill="none" stroke="#c58c46" stroke-width="2" stroke-linecap="round"></path>
+                  <text x="206" y="52" font-size="13" font-weight="800" fill="#8a5e2e">表達</text>
+
+                  <path d="M64 190 C40 202, 30 220, 24 238" fill="none" stroke="#c58c46" stroke-width="2" stroke-linecap="round"></path>
+                  <text x="18" y="254" font-size="13" font-weight="800" fill="#8a5e2e">行動</text>
+
+                  <path d="M190 204 C220 220, 232 244, 238 268" fill="none" stroke="#c58c46" stroke-width="2" stroke-linecap="round"></path>
+                  <text x="203" y="286" font-size="13" font-weight="800" fill="#8a5e2e">耐心</text>
+
+                  <line x1="62" y1="332" x2="198" y2="332" stroke="rgba(31,36,34,0.18)" stroke-width="2"></line>
+                  <text x="130" y="346" text-anchor="middle" font-size="13" font-weight="800" fill="#405f53">新的自己正在練習中</text>
+                </svg>
+              </div>
+
+              <div class="body-map-notes">
+                <strong>請畫下簡易人體線條圖，在不同部位寫上你理想自我的樣子</strong>
+                <p>可以把想強化的特質寫在頭腦、胸口、雙手或腳步旁邊，也可以標記想弱化的舊反應。</p>
+              </div>
             </div>
 
             <ol class="practice-questions">
@@ -2682,11 +2857,11 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section final-practice-section">
       <details class="practice-toggle">
         <summary>
           <span class="practice-summary-text">
-            <span class="practice-kicker">Takeaways and Action Plan</span>
+            <span class="practice-kicker">Takeaways and action plan</span>
             <span class="practice-title">帶走一個小練習</span>
           </span>
           <span class="practice-open-label">展開題目</span>
